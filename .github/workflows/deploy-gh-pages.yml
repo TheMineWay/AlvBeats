@@ -7,7 +7,7 @@ on:
 
 env:
   # Setting an environment variable with the value of a configuration variable
-  env_var: ${{ vars.ENV_CONTEXT_VAR }}
+  VITE_SITE_URL: ${{ secrets.VITE_SITE_URL }}
 
 permissions:
   contents: read
