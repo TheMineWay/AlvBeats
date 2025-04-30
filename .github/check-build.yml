@@ -1,0 +1,35 @@
+name: Check Build
+
+on:
+  pull_request:
+    branches:
+      - main # Run the workflow for PRs targeting the 'main' branch
+
+jobs:
+  build-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: ☑️ Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: 💚 Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22 # Use the Node.js version specified in your project
+
+      # Step 3: Install pnpm
+      - name: 🍟 Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      # Step 4: Install dependencies
+      - name: 📦 Install dependencies
+        run: pnpm install
+
+      # Step 5: Build the app
+      - name: 🔨 Build the app
+        run: pnpm run build
