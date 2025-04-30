@@ -126,6 +126,7 @@ const ICONS = [
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/AlvBeats/",
   plugins: [
     react(),
     tailwindcss(),
