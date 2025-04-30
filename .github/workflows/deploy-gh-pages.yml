@@ -34,8 +34,14 @@ jobs:
       - name: 🔨 Build the app
         run: pnpm run build
 
+      - name: 🧹 Clean up Git
+        run: |
+          git config --global --unset user.name || true
+          git config --global --unset user.email || true
+
       - name: 🌐 Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          force_orphan: true
