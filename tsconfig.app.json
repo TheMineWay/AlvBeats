@@ -25,13 +25,13 @@
     /* Shad CDN */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@assets/*": ["./src/assets/*"],
       "@utils/*": ["./src/utils/*"],
       "@i18n/*": ["./src/i18n/*"],
       "@constants/*": ["./src/constants/*"],
-      "@types/*": ["./src/types/*"]
+      "@types/*": ["./src/types/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"]

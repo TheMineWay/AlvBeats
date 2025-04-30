@@ -1,4 +1,4 @@
-import * as React from "react";
+import Container from "@components/layout/container";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 
 export const Route = createRootRoute({
@@ -7,8 +7,10 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <React.Fragment>
-      <Outlet />
-    </React.Fragment>
+    <div>
+      <Container>
+        <Outlet />
+      </Container>
+    </div>
   );
 }
