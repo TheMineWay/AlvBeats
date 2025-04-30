@@ -27,10 +27,10 @@
     "paths": {
       "@components/*": ["./src/components/*"],
       "@assets/*": ["./src/assets/*"],
-      "@utils/*": ["./src/utils/*"],
       "@i18n/*": ["./src/i18n/*"],
       "@constants/*": ["./src/constants/*"],
-      "@types/*": ["./src/types/*"],
+      "@shared/*": ["./src/types/*"],
+      "@features/*": ["./src/features/*"],
       "@/*": ["./src/*"]
     }
   },
