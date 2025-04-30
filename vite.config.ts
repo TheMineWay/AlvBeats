@@ -21,6 +21,10 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "./src/assets"),
       "@utils": path.resolve(__dirname, "./src/utils"),
       "@i18n": path.resolve(__dirname, "./src/i18n"),
+      "@types": path.resolve(__dirname, "./src/types"),
     },
+  },
+  server: {
+    port: 3000,
   },
 });

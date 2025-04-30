@@ -1,8 +1,32 @@
 {
   "name": "alv-beats",
+  "description": "A web based lyrics system",
+  "keywords": [
+    "alv-beats",
+    "lyrics",
+    "music",
+    "web",
+    "system"
+  ],
+  "homepage": "",
+  "bugs": {
+    "url": "https://github.com/TheMineWay/AlvBeats/issues"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "author": {
+    "name": "TheMineWay",
+    "url": "https://www.linkedin.com/in/joelcamposoliva/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheMineWay/AlvBeats"
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
