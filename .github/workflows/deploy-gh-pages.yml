@@ -15,6 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: 🍟 Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: ☑️ Checkout code
         uses: actions/checkout@v3
 
@@ -24,10 +29,10 @@ jobs:
           node-version: 22
 
       - name: 📦 Install dependencies
-        run: npm install
+        run: pnpm install
 
       - name: 🔨 Build the app
-        run: npm run build
+        run: pnpm run build
 
       - name: 🌐 Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
