@@ -135,6 +135,8 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["icon.png", "favicon.ico", "robots.txt"],
       manifest: {
+        name: "AlvBeats",
+        short_name: "AlvBeats",
         icons: ICONS,
       },
     }),
