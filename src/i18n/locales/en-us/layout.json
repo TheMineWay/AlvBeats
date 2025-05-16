@@ -1,5 +1,35 @@
 {
   "welcome": {
     "Message": "Welcome to AlvBeats!"
+  },
+  "navigation": {
+    "actions": {
+      "theme": {
+        "Placeholder": "Select a theme",
+        "options": {
+          "red": {
+            "Label": "Red"
+          },
+          "rose": {
+            "Label": "Rose"
+          },
+          "orange": {
+            "Label": "Orange"
+          },
+          "green": {
+            "Label": "Green"
+          },
+          "blue": {
+            "Label": "Blue"
+          },
+          "yellow": {
+            "Label": "Yellow"
+          },
+          "violet": {
+            "Label": "Violet"
+          }
+        }
+      }
+    }
   }
 }
