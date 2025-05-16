@@ -5,6 +5,7 @@ import {
   WebWarehouse,
 } from "@themineway/smart-storage-js";
 import { useConnectorWatch } from "@themineway/smart-storage-react";
+import { useEffect } from "react";
 import { z } from "zod";
 
 const C: LocalStorageConnector = WebWarehouse.getConnector(
@@ -16,8 +17,13 @@ export const useTheme = () => {
     schema: THEME_SCHEMA,
   });
 
+  useEffect(() => {
+    if (theme?.theme) document.body.setAttribute("data-theme", theme.theme);
+  }, [theme]);
+
   const setTheme = (value: string) => {
     C.set("theme", { theme: value }, THEME_SCHEMA);
+    document.body.setAttribute("data-theme", value);
   };
 
   return {
