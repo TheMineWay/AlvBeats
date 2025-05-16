@@ -1,0 +1,18 @@
+body[data-theme="yellow"] {
+  --radius: 0.5rem;
+  --primary: oklch(0.795 0.184 86.047);
+  --primary-foreground: oklch(0.421 0.095 57.708);
+  --ring: oklch(0.795 0.184 86.047);
+  --sidebar-primary: oklch(0.795 0.184 86.047);
+  --sidebar-primary-foreground: oklch(0.421 0.095 57.708);
+  --sidebar-ring: oklch(0.795 0.184 86.047);
+}
+
+body[data-theme="yellow"] .dark {
+  --primary: oklch(0.795 0.184 86.047);
+  --primary-foreground: oklch(0.421 0.095 57.708);
+  --ring: oklch(0.554 0.135 66.442);
+  --sidebar-primary: oklch(0.795 0.184 86.047);
+  --sidebar-primary-foreground: oklch(0.421 0.095 57.708);
+  --sidebar-ring: oklch(0.554 0.135 66.442);
+}

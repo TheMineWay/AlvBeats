@@ -18,12 +18,12 @@ export const useTheme = () => {
   });
 
   useEffect(() => {
-    if (theme?.theme) document.body.setAttribute("data-theme", theme.theme);
+    applyTheme(theme?.theme);
   }, [theme]);
 
   const setTheme = (value: string) => {
     C.set("theme", { theme: value }, THEME_SCHEMA);
-    document.body.setAttribute("data-theme", value);
+    applyTheme(value as (typeof THEMES)[number]);
   };
 
   return {
@@ -37,3 +37,13 @@ export const useTheme = () => {
 const THEME_SCHEMA = z.object({
   theme: z.enum(THEMES).nullable().default(null),
 });
+
+const applyTheme = (theme?: (typeof THEMES)[number] | null) => {
+  if (theme) {
+    if (theme === "default") {
+      document.body.removeAttribute("data-theme");
+    } else {
+      document.body.setAttribute("data-theme", theme);
+    }
+  }
+};

@@ -1,4 +1,5 @@
 export const THEMES = [
+  "default",
   "red",
   "rose",
   "orange",

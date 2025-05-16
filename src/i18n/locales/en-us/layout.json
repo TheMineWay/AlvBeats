@@ -7,6 +7,9 @@
       "theme": {
         "Placeholder": "Select a theme",
         "options": {
+          "default": {
+            "Label": "Default"
+          },
           "red": {
             "Label": "Red"
           },
