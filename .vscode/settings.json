@@ -6,8 +6,5 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
   },
-  "files.exclude": {
-    "dist": true
-  },
   "editor.formatOnSave": true
 }
