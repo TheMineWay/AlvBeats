@@ -30,7 +30,7 @@
       "@i18n/*": ["./src/i18n/*"],
       "@constants/*": ["./src/constants/*"],
       "@shared/*": ["./src/types/*"],
-      "@features/*": ["./src/features/*"],
+      "@f-homepage/*": ["./src/features/homepage/*"],
       "@/*": ["./src/*"]
     }
   },

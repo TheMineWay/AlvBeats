@@ -149,7 +149,7 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "./src/assets"),
       "@i18n": path.resolve(__dirname, "./src/i18n"),
       "@shared": path.resolve(__dirname, "./src/shared"),
-      "@features": path.resolve(__dirname, "./src/features"),
+      "@f-homepage": path.resolve(__dirname, "./src/features/homepage"),
     },
   },
   server: {
