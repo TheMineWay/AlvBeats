@@ -16,8 +16,8 @@ export const ThemeSelector: FC = () => {
 
   return (
     <Select
-      defaultValue={theme?.theme ?? undefined}
-      onValueChange={(v) => setTheme(v)}
+      value={theme?.theme ?? undefined}
+      onValueChange={(v) => setTheme({ theme: v as (typeof THEMES)[number] })}
     >
       <SelectTrigger>
         <SelectValue placeholder={t().navigation.actions.theme.Placeholder} />

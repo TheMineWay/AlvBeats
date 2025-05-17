@@ -8,7 +8,7 @@ body[data-theme="rose"] {
   --sidebar-ring: oklch(0.645 0.246 16.439);
 }
 
-body[data-theme="rose"] .dark {
+body[data-theme="rose"] body[data-dark="true"] {
   --primary: oklch(0.645 0.246 16.439);
   --primary-foreground: oklch(0.969 0.015 12.422);
   --ring: oklch(0.645 0.246 16.439);

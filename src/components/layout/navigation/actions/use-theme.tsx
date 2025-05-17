@@ -1,29 +1,23 @@
 import { LOCAL_STORAGE_CONNECTOR_KEY } from "@constants/storage/storage-services.constant";
 import { THEMES } from "@constants/theme/themes.constant";
-import {
-  type LocalStorageConnector,
-  WebWarehouse,
-} from "@themineway/smart-storage-js";
+import { WebWarehouse } from "@themineway/smart-storage-js";
 import { useConnectorWatch } from "@themineway/smart-storage-react";
-import { useEffect } from "react";
 import { z } from "zod";
 
-const C: LocalStorageConnector = WebWarehouse.getConnector(
-  LOCAL_STORAGE_CONNECTOR_KEY
-);
-
 export const useTheme = () => {
-  const { value: theme } = useConnectorWatch(C, "theme", {
-    schema: THEME_SCHEMA,
-  });
+  const { value: theme, connector } = useConnectorWatch(
+    WebWarehouse.getConnector(LOCAL_STORAGE_CONNECTOR_KEY),
+    "theme",
+    {
+      schema: THEME_SCHEMA,
+      onChange: (theme) => {
+        if (theme) applyTheme(theme);
+      },
+    }
+  );
 
-  useEffect(() => {
-    applyTheme(theme?.theme);
-  }, [theme]);
-
-  const setTheme = (value: string) => {
-    C.set("theme", { theme: value }, THEME_SCHEMA);
-    applyTheme(value as (typeof THEMES)[number]);
+  const setTheme = (newTheme: Partial<Theme>) => {
+    connector.set("theme", { ...theme, ...newTheme }, THEME_SCHEMA);
   };
 
   return {
@@ -34,16 +28,25 @@ export const useTheme = () => {
 
 /* Internal */
 
+type Theme = z.infer<typeof THEME_SCHEMA>;
+
 const THEME_SCHEMA = z.object({
   theme: z.enum(THEMES).nullable().default(null),
+  dark: z.boolean().default(false),
 });
 
-const applyTheme = (theme?: (typeof THEMES)[number] | null) => {
-  if (theme) {
-    if (theme === "default") {
+const applyTheme = (theme: Partial<Theme>) => {
+  if (theme.theme) {
+    if (theme.theme === "default") {
       document.body.removeAttribute("data-theme");
     } else {
-      document.body.setAttribute("data-theme", theme);
+      document.body.setAttribute("data-theme", theme.theme);
     }
+  }
+
+  if (theme.dark) {
+    document.body.setAttribute("data-dark", "true");
+  } else {
+    document.body.removeAttribute("data-dark");
   }
 };
