@@ -31,7 +31,8 @@
       "@constants/*": ["./src/constants/*"],
       "@shared/*": ["./src/types/*"],
       "@f-homepage/*": ["./src/features/homepage/*"],
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@pkg": ["./package.json"]
     }
   },
   "include": ["src"]

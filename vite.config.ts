@@ -153,6 +153,7 @@ export default defineConfig(({ mode }) => {
         "@i18n": path.resolve(__dirname, "./src/i18n"),
         "@shared": path.resolve(__dirname, "./src/shared"),
         "@f-homepage": path.resolve(__dirname, "./src/features/homepage"),
+        "@pkg": path.resolve(__dirname, "./package.json"),
       },
     },
     server: {

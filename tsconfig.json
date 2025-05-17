@@ -13,7 +13,8 @@
       "@constants/*": ["./src/constants/*"],
       "@shared/*": ["./src/shared/*"],
       "@f-homepage": ["./src/features/homepage/*"],
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@pkg": ["./package.json"]
     }
   }
 }
