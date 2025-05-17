@@ -1,14 +1,15 @@
-import { Navigation } from "@components/layout/navigation/navigation";
-import { Header } from "@f-homepage/header/header";
+import { Footer } from "@f-homepage/footer/footer";
+import { Welcome } from "@f-homepage/welcome/welcome";
 
 export const Homepage: FC = () => {
   return (
-    <div>
-      <div className="h-12 w-full fixed top-0 left-0 right-0 z-10">
-        <Navigation />
+    <div className="min-h-full flex flex-col justify-between">
+      {/* Welcome */}
+      <div>
+        <Welcome />
       </div>
-      <div className="h-12" />
-      <Header />
+      <div>MAIN</div>
+      <Footer />
     </div>
   );
 };

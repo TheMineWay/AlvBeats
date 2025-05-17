@@ -1,6 +1,6 @@
 import { useTranslation } from "@i18n/use-translation";
 
-export const Header: FC = () => {
+export const Welcome: FC = () => {
   const { t } = useTranslation("layout");
   return (
     <div
