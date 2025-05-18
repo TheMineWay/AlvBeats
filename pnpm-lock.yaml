@@ -27,11 +27,11 @@ importers:
         specifier: ^1.119.1
         version: 1.120.3(@tanstack/react-router@1.120.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@tanstack/router-core@1.120.3)(csstype@3.1.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tiny-invariant@1.3.3)
       '@themineway/smart-storage-js':
+        specifier: 1.0.0-alpha.14
+        version: 1.0.0-alpha.14
+      '@themineway/smart-storage-react':
         specifier: 1.0.0-alpha.11
         version: 1.0.0-alpha.11
-      '@themineway/smart-storage-react':
-        specifier: 1.0.0-alpha.10
-        version: 1.0.0-alpha.10
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -1549,11 +1549,11 @@ packages:
     resolution: {integrity: sha512-XLUh1Py3AftcERrxkxC5Y5m5mfllRH3YR6YVlyjFgI2Tc2Ssy2NKmQFQIafoxfW459UJ8Dn81nWKETEIJifE4g==}
     engines: {node: '>=12'}
 
-  '@themineway/smart-storage-js@1.0.0-alpha.11':
-    resolution: {integrity: sha512-udAcbjUCdS9J4XBMERL0FZE0N3RdZbBP2D1Q8hcwkj2iD+EudF+4uQQ63Pnqs7oqcMBtaFNmOfM/O51Cxg06Pg==}
+  '@themineway/smart-storage-js@1.0.0-alpha.14':
+    resolution: {integrity: sha512-TpmmujrvGq/AcJY06Jl7cHzIpLfPpZG4jRun/JNyklh8U3BCpBHgCCAdQ5ZqL6wmW+iPnoIEiD0Kl+kkVLnItg==}
 
-  '@themineway/smart-storage-react@1.0.0-alpha.10':
-    resolution: {integrity: sha512-eNQSzI6+NMgC0+5UNAaKUdtN7I8/6yvNuc9bUmLoXfEoudSUHjEXsSlprv54vJnlyXvJjls+dpgMWsZiKR60UA==}
+  '@themineway/smart-storage-react@1.0.0-alpha.11':
+    resolution: {integrity: sha512-ehyee0/CMIb8euM1O43fB34bEGrzDnX2iXS3IujYRgAV6F1UZu9Tf/21duUi+tels+A2ToZNAkQ0WJwBlKqqRg==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -4969,14 +4969,14 @@ snapshots:
 
   '@tanstack/virtual-file-routes@1.115.0': {}
 
-  '@themineway/smart-storage-js@1.0.0-alpha.11':
+  '@themineway/smart-storage-js@1.0.0-alpha.14':
     dependencies:
       yup: 1.6.1
       zod: 3.24.4
 
-  '@themineway/smart-storage-react@1.0.0-alpha.10':
+  '@themineway/smart-storage-react@1.0.0-alpha.11':
     dependencies:
-      '@themineway/smart-storage-js': 1.0.0-alpha.11
+      '@themineway/smart-storage-js': 1.0.0-alpha.14
       react: 19.1.0
 
   '@types/babel__core@7.20.5':

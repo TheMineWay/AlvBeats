@@ -6,9 +6,8 @@ import { SongSearch } from "@components/songs/search/song-search";
 
 export const StoredSongSearch: FC = () => {
   const { value: indexData } = useSongIndex();
-  const max = indexData?.songs ?? [];
 
-  const { results, setQuery, query } = useSearch(max, {
+  const { results, setQuery, query } = useSearch(indexData?.songs ?? [], {
     searchMethod: storedSongSearcher,
   });
 
