@@ -1,4 +1,4 @@
-import { SongSearch } from "@/features/songs/song-search/song-search";
+import { StoredSongSearch } from "@/features/song/stored-song-search/stored-song-search";
 import Container from "@components/layout/container";
 import { Footer } from "@f-homepage/footer/footer";
 import { Welcome } from "@f-homepage/welcome/welcome";
@@ -11,9 +11,15 @@ export const Homepage: FC = () => {
         <Welcome />
       </div>
       <Container className="grow flex flex-col gap-4">
-        <SongSearch />
+        <Body />
       </Container>
       <Footer />
     </div>
   );
+};
+
+/* Internal */
+
+const Body: FC = () => {
+  return <StoredSongSearch />;
 };
