@@ -1,0 +1,11 @@
+{
+  "forms": {
+    "search": {
+      "fields": {
+        "query": {
+          "Placeholder": "Search for a song..."
+        }
+      }
+    }
+  }
+}

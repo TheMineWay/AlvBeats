@@ -1,0 +1,9 @@
+{
+  "main": {
+    "actions": {
+      "song-editor": {
+        "Title": "Song editor"
+      }
+    }
+  }
+}
