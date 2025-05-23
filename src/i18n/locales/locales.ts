@@ -1,7 +1,10 @@
 import { Language } from "@i18n/language.enum.ts";
 
+export const MASTER_LOCALE = Language.EN_US;
+
 const LOCALES = {
   [Language.EN_US]: () => import("./en-us/locale.ts"),
+  [Language.ES_ES]: () => import("./es-es/locale.ts"),
 } as const satisfies Record<string, () => Promise<object>>;
 
 export const getLocale = async (language: Language) => {
@@ -15,5 +18,5 @@ export type LocaleKey = keyof Awaited<
 >["default"];
 
 export type LocaleContent<K extends LocaleKey> = Awaited<
-  Awaited<ReturnType<(typeof LOCALES)[Language]>>["default"][K]
+  Awaited<ReturnType<(typeof LOCALES)[typeof MASTER_LOCALE]>>["default"][K]
 >;
