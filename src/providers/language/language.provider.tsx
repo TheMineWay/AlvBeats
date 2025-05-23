@@ -2,12 +2,11 @@ import {
   LANGUAGE_CONTEXT,
   TranslationStore,
 } from "@/providers/language/language.context";
-import { Language } from "@i18n/language.enum";
 import { getLocale, MASTER_LOCALE } from "@i18n/locales/locales";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 
-const DEFAULT_LANGUAGE = Language.ES_ES;
+const DEFAULT_LANGUAGE = MASTER_LOCALE;
 
 type Props = {
   children: React.ReactNode;
