@@ -30,6 +30,7 @@ export const useTheme = () => {
   return {
     theme,
     setTheme,
+    applyTheme: () => applyTheme(theme ?? {}),
   };
 };
 
