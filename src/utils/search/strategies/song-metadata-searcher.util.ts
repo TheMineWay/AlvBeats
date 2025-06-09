@@ -5,5 +5,7 @@ export const storedSongSearcher: SearchMethod<StoredSong> = (
   query,
   original
 ) => {
-  return original.filter((song) => song.metadata.name.includes(query));
+  return original.filter((song) =>
+    song.metadata.name.toLowerCase().includes(query.toLowerCase())
+  );
 };
