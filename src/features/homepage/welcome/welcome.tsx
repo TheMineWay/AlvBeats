@@ -2,6 +2,7 @@ import { useTranslation } from "@i18n/use-translation";
 
 export const Welcome: FC = () => {
   const { t } = useTranslation("layout");
+
   return (
     <div
       className={
