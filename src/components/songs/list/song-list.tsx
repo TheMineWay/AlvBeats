@@ -1,11 +1,14 @@
 import { StoredSong } from "@/models/song/stored-song.model";
 import defaultSongCover from "@assets/song/default-song-cover.png";
+import { useTranslation } from "@i18n/use-translation";
 
 type Props = {
   songs: StoredSong[];
 };
 
 export const SongList: FC<Props> = ({ songs }) => {
+  const { interpolated } = useTranslation("song-search");
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 h-18">
       {songs.map((song) => (
@@ -15,7 +18,10 @@ export const SongList: FC<Props> = ({ songs }) => {
         >
           <img
             className="h-18 w-18 rounded-l object-cover"
-            alt="cover"
+            alt={interpolated(
+              (t) => t.lists["song-results"].item["Cover-alt"],
+              { title: song.metadata.name }
+            )}
             src={song.metadata.coverUrl ?? defaultSongCover}
           />
           <div className="h-full flex flex-col justify-center pl-2">
