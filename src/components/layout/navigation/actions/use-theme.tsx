@@ -4,12 +4,19 @@ import { WebWarehouse } from "@themineway/smart-storage-js";
 import { useConnectorWatch } from "@themineway/smart-storage-react";
 import { z } from "zod";
 
+type Theme = z.infer<typeof THEME_SCHEMA>;
+
+const THEME_SCHEMA = z.object({
+  theme: z.enum(THEMES).nullable().default(null),
+  dark: z.boolean().default(false),
+});
+
 export const useTheme = () => {
-  const { value: theme, connector } = useConnectorWatch(
+  const { value: theme, connector } = useConnectorWatch<Theme>(
     WebWarehouse.getConnector(LOCAL_STORAGE_CONNECTOR_KEY),
     "theme",
+    THEME_SCHEMA,
     {
-      schema: THEME_SCHEMA,
       onChange: (theme) => {
         if (theme) applyTheme(theme);
       },
@@ -27,13 +34,6 @@ export const useTheme = () => {
 };
 
 /* Internal */
-
-type Theme = z.infer<typeof THEME_SCHEMA>;
-
-const THEME_SCHEMA = z.object({
-  theme: z.enum(THEMES).nullable().default(null),
-  dark: z.boolean().default(false),
-});
 
 const applyTheme = (theme: Partial<Theme>) => {
   if (theme.theme) {
