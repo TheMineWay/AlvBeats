@@ -6,7 +6,7 @@ type Props = {
 
 export const SongList: FC<Props> = ({ songs }) => {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
       {songs.map((song) => (
         <div
           key={song.id}

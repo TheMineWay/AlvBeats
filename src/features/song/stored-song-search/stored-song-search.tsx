@@ -12,7 +12,7 @@ export const StoredSongSearch: FC = () => {
   });
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-4">
       <SongSearch search={query} setSearch={setQuery} />
       <SongList songs={results} />
     </div>
