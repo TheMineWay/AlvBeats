@@ -2,5 +2,10 @@
   "sentences": {
     "Coming-soon": "Coming soon",
     "Back-home": "Back home"
+  },
+  "words": {
+    "Play": "Play",
+    "Pause": "Pause",
+    "Stop": "Stop"
   }
 }
