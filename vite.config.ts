@@ -152,7 +152,7 @@ export default defineConfig(({ mode }) => {
         "@assets": path.resolve(__dirname, "./src/assets"),
         "@i18n": path.resolve(__dirname, "./src/i18n"),
         "@shared": path.resolve(__dirname, "./src/shared"),
-        "@f-homepage": path.resolve(__dirname, "./src/features/homepage"),
+        "@features": path.resolve(__dirname, "./src/features"),
         "@pkg": path.resolve(__dirname, "./package.json"),
       },
     },

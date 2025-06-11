@@ -1,5 +1,5 @@
-import { StoredSong } from "@/models/song/stored-song.model";
 import defaultSongCover from "@assets/song/default-song-cover.png";
+import { StoredSong } from "@features/song/models/stored-song.model";
 import { useTranslation } from "@i18n/use-translation";
 
 type Props = {

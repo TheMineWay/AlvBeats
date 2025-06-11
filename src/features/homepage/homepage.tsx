@@ -1,7 +1,7 @@
 import { StoredSongSearch } from "@/features/song/stored-song-search/stored-song-search";
 import Container from "@components/layout/container";
-import { Footer } from "@f-homepage/footer/footer";
-import { Welcome } from "@f-homepage/welcome/welcome";
+import { Footer } from "@features/homepage/footer/footer";
+import { Welcome } from "@features/homepage/welcome/welcome";
 
 export const Homepage: FC = () => {
   return (
