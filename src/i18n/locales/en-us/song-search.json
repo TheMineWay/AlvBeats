@@ -1,0 +1,20 @@
+{
+  "forms": {
+    "search": {
+      "fields": {
+        "query": {
+          "Placeholder": "Search for a song..."
+        }
+      }
+    }
+  },
+  "lists": {
+    "song-results": {
+      "No-results": "No songs found matching search criteria.",
+      "Empty": "No songs available in the device.",
+      "item": {
+        "Cover-alt": "Cover of {title}"
+      }
+    }
+  }
+}

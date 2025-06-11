@@ -1,14 +1,25 @@
-import { Navigation } from "@components/layout/navigation/navigation";
-import { Header } from "@f-homepage/header/header";
+import { StoredSongSearch } from "@/features/song/stored-song-search/stored-song-search";
+import Container from "@components/layout/container";
+import { Footer } from "@f-homepage/footer/footer";
+import { Welcome } from "@f-homepage/welcome/welcome";
 
 export const Homepage: FC = () => {
   return (
-    <div>
-      <div className="h-12 w-full fixed top-0 left-0 right-0 z-10">
-        <Navigation />
+    <div className="min-h-full flex flex-col justify-between gap-8">
+      {/* Welcome */}
+      <div>
+        <Welcome />
       </div>
-      <div className="h-12" />
-      <Header />
+      <Container className="grow flex flex-col gap-4">
+        <Body />
+      </Container>
+      <Footer />
     </div>
   );
+};
+
+/* Internal */
+
+const Body: FC = () => {
+  return <StoredSongSearch />;
 };

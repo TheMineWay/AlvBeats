@@ -2,7 +2,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
 const ICONS = [
@@ -125,34 +125,40 @@ const ICONS = [
 ];
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: "/AlvBeats/",
-  plugins: [
-    react(),
-    tailwindcss(),
-    TanStackRouterVite({ target: "react", autoCodeSplitting: true }),
-    VitePWA({
-      registerType: "autoUpdate",
-      includeAssets: ["icon.png", "favicon.ico", "robots.txt"],
-      manifest: {
-        name: "AlvBeats",
-        short_name: "AlvBeats",
-        icons: ICONS,
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+
+  return {
+    base: "/AlvBeats/",
+    plugins: [
+      react(),
+      tailwindcss(),
+      TanStackRouterVite({ target: "react", autoCodeSplitting: true }),
+      VitePWA({
+        registerType: "autoUpdate",
+        includeAssets: ["icon.png", "favicon.ico", "robots.txt"],
+        manifest: {
+          name: "AlvBeats",
+          short_name: "AlvBeats",
+          icons: ICONS,
+        },
+      }),
+    ],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+        "@components": path.resolve(__dirname, "./src/components"),
+        "@constants": path.resolve(__dirname, "./src/constants"),
+        "@assets": path.resolve(__dirname, "./src/assets"),
+        "@i18n": path.resolve(__dirname, "./src/i18n"),
+        "@shared": path.resolve(__dirname, "./src/shared"),
+        "@f-homepage": path.resolve(__dirname, "./src/features/homepage"),
+        "@pkg": path.resolve(__dirname, "./package.json"),
       },
-    }),
-  ],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-      "@components": path.resolve(__dirname, "./src/components"),
-      "@constants": path.resolve(__dirname, "./src/constants"),
-      "@assets": path.resolve(__dirname, "./src/assets"),
-      "@i18n": path.resolve(__dirname, "./src/i18n"),
-      "@shared": path.resolve(__dirname, "./src/shared"),
-      "@f-homepage": path.resolve(__dirname, "./src/features/homepage"),
     },
-  },
-  server: {
-    port: 3000,
-  },
+    server: {
+      port: 3000,
+      allowedHosts: env.VITE_ALLOWED_HOSTS?.split(","),
+    },
+  };
 });
