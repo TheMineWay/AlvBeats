@@ -1,4 +1,4 @@
-import { STORED_SONG_SCHEMA } from "@features/song/models/stored-song.model";
+import { STORED_SONG_SCHEMA } from "@features/song/components/models/stored-song.model";
 import { z } from "zod";
 
 export const SONG_INDEX_SCHEMA = z.object({
