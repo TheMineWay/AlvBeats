@@ -15,7 +15,7 @@ export const SongList: FC<Props> = ({ songs }) => {
           to="/player/$song-id"
           params={{ "song-id": song.id }}
         >
-          <SongItem song={song} />
+          <SongItem song={song} hoverable />
         </Link>
       ))}
     </div>

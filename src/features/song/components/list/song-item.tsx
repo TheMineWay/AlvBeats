@@ -1,16 +1,22 @@
+import { cn } from "@/lib/utils";
 import { Song } from "@/shared/schemas/song/song.schema";
 import defaultSongCover from "@assets/song/default-song-cover.png";
 import { useTranslation } from "@i18n/use-translation";
 
 type SongItemProps = {
   song: Pick<Song, "metadata">;
+  hoverable?: boolean;
 };
 
-export const SongItem: FC<SongItemProps> = ({ song }) => {
+export const SongItem: FC<SongItemProps> = ({ song, hoverable = false }) => {
   const { interpolated } = useTranslation("song-search");
 
   return (
-    <div className="border rounded hover:bg-gray-100 flex gap-2 cursor-pointer transition-colors">
+    <div
+      className={cn("border rounded flex gap-2 transition-colors", {
+        "hover:bg-gray-100 cursor-pointer": hoverable,
+      })}
+    >
       <img
         className="h-18 w-18 rounded-l object-cover"
         alt={interpolated((t) => t.lists["song-results"].item["Cover-alt"], {
