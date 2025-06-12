@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { formatDuration } from "@/shared/utils/time/format-duration";
 import { UseSong } from "@features/song/hooks/player/use-song";
 
 const MAX_OFFSET_LINES = 2;
@@ -35,10 +36,12 @@ const Item: FC<ItemProps> = ({ item }) => {
         ["font-bold text-xl"]: item.isActive,
       })}
     >
-      <b>
-        {item.data.startTime}:{item.data.endTime}
-      </b>{" "}
-      - {item.data.text}
+      <i>{formatDuration(item.data.startTime)} </i>- {item.data.text}
+      {item.data.endTime ? (
+        <i>{` - ${formatDuration(item.data.endTime)}`}</i>
+      ) : (
+        ""
+      )}
     </p>
   );
 };
