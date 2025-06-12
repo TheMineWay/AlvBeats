@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 type Options = {
   initialTime?: number;
   autoPlay?: boolean;
+  maxTime?: number;
 };
 
 export const useTimer = ({
   initialTime = 0,
   autoPlay = false,
+  maxTime = Infinity,
 }: Options = {}) => {
   const [time, setTime] = useState(initialTime);
   const [isRunning, setIsRunning] = useState(autoPlay);
@@ -33,6 +35,11 @@ export const useTimer = ({
     setTime(0);
   };
 
+  // Autostop
+  if (time >= maxTime) {
+    stop();
+  }
+
   return {
     time,
     setTime,
@@ -44,3 +51,5 @@ export const useTimer = ({
     stop,
   };
 };
+
+export type UseTimer = ReturnType<typeof useTimer>;

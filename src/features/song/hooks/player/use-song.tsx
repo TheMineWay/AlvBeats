@@ -1,9 +1,17 @@
 import { Song } from "@/shared/schemas/song/song.schema";
-import { useTimer } from "@/shared/utils/timer/use-timer";
+import { useTimer } from "@/shared/utils/time/use-timer";
 import { useMemo } from "react";
 
 export const useSong = (song: Song) => {
-  const timer = useTimer();
+  const timer = useTimer({ maxTime: song.metadata.duration });
+
+  const duration = useMemo(() => {
+    const maxDuration = song.lyrics.reduce((max, lyric) => {
+      const endTime = lyric.endTime ?? Infinity;
+      return Math.max(max, endTime);
+    }, 0);
+    return maxDuration > 0 ? maxDuration : 0;
+  }, [song.lyrics]);
 
   const activeLyricIndex = useMemo(() => {
     if (!song.lyrics || song.lyrics.length === 0) return -1;
@@ -29,6 +37,8 @@ export const useSong = (song: Song) => {
     timer,
     lyrics,
     activeLyricIndex,
+    duration,
+    song,
   };
 };
 

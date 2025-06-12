@@ -1,4 +1,6 @@
+import { formatDuration } from "@/shared/utils/time/format-duration";
 import { Button } from "@components/ui/button";
+import { Slider } from "@components/ui/slider";
 import { UseSong } from "@features/song/hooks/player/use-song";
 import { useTranslation } from "@i18n/use-translation";
 import PauseIcon from "@mui/icons-material/Pause";
@@ -14,7 +16,7 @@ export const PlayerActions: FC<Props> = ({ songManager }) => {
   const { t } = useTranslation("common");
 
   return (
-    <div className="flex flex-col gap-2 items-center justify-center">
+    <div className="flex flex-col gap-2 items-center justify-center w-full max-w-sm">
       <div className="flex gap-2">
         {timer.isRunning ? (
           <Button aria-label={t().words.Pause} onClick={timer.pause}>
@@ -29,7 +31,24 @@ export const PlayerActions: FC<Props> = ({ songManager }) => {
           <StopIcon />
         </Button>
       </div>
-      <small>{timer.time}</small>
+      <TimeBar songManager={songManager} />
+    </div>
+  );
+};
+
+type TimeBarProps = {
+  songManager: UseSong;
+};
+
+const TimeBar: FC<TimeBarProps> = ({ songManager: { timer, song } }) => {
+  return (
+    <div className="flex gap-2 w-full">
+      <Slider
+        onValueChange={([v]) => timer.setTime(v)}
+        value={[timer.time]}
+        max={song.metadata.duration}
+      />
+      <p>{formatDuration(timer.time)}</p>
     </div>
   );
 };
