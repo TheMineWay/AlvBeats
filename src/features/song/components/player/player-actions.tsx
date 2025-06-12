@@ -1,6 +1,9 @@
 import { Button } from "@components/ui/button";
 import { UseSong } from "@features/song/hooks/player/use-song";
 import { useTranslation } from "@i18n/use-translation";
+import PauseIcon from "@mui/icons-material/Pause";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import StopIcon from "@mui/icons-material/Stop";
 
 type Props = {
   songManager: UseSong;
@@ -15,15 +18,15 @@ export const PlayerActions: FC<Props> = ({ songManager }) => {
       <div className="flex gap-2">
         {timer.isRunning ? (
           <Button aria-label={t().words.Pause} onClick={timer.pause}>
-            Pause
+            <PauseIcon />
           </Button>
         ) : (
           <Button aria-label={t().words.Play} onClick={timer.play}>
-            Play
+            <PlayArrowIcon />
           </Button>
         )}
         <Button aria-label={t().words.Stop} onClick={timer.stop}>
-          Stop
+          <StopIcon />
         </Button>
       </div>
       <small>{timer.time}</small>
