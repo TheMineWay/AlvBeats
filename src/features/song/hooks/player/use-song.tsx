@@ -13,30 +13,38 @@ export const useSong = (song: Song) => {
     return maxDuration > 0 ? maxDuration : 0;
   }, [song.lyrics]);
 
-  const activeLyricIndex = useMemo(() => {
-    if (!song.lyrics || song.lyrics.length === 0) return -1;
+  const activeLyric = useMemo(() => {
+    if (!song.lyrics || song.lyrics.length === 0)
+      return {
+        index: -1,
+      };
 
     const currentTime = timer.time;
-    return song.lyrics.findIndex((lyric) => {
+    const index = song.lyrics.findIndex((lyric) => {
       const startTime = lyric.startTime ?? 0;
       const endTime = lyric.endTime ?? Infinity;
       return currentTime >= startTime && currentTime <= endTime;
     });
+
+    return {
+      index,
+      data: index !== -1 ? song.lyrics[index] : undefined,
+    };
   }, [song, timer.time]);
 
   const lyrics = useMemo(() => {
-    if (activeLyricIndex === -1) return [];
+    if (activeLyric.index === -1) return [];
 
     return song.lyrics.map((lyric, index) => ({
       data: lyric,
-      isActive: index === activeLyricIndex,
+      isActive: index === activeLyric.index,
     }));
-  }, [activeLyricIndex, song.lyrics]);
+  }, [activeLyric, song.lyrics]);
 
   return {
     timer,
     lyrics,
-    activeLyricIndex,
+    activeLyric,
     duration,
     song,
   };

@@ -10,11 +10,11 @@ type Props = {
 };
 
 export const Lyrics: FC<Props> = ({ songManager }) => {
-  const { lyrics: _lyrics, activeLyricIndex } = songManager;
+  const { lyrics: _lyrics, activeLyric } = songManager;
 
   const lyrics = _lyrics.slice(
-    activeLyricIndex,
-    Math.min(_lyrics.length, activeLyricIndex + MAX_OFFSET_LINES + 1)
+    Math.min(activeLyric.index, _lyrics.length - (MAX_OFFSET_LINES + 1)),
+    Math.min(_lyrics.length, activeLyric.index + MAX_OFFSET_LINES + 1)
   );
 
   return (
