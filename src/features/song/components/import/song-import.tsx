@@ -1,8 +1,6 @@
-import { FileUpload } from "@components/form/file-upload/file-upload";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs";
+import { SongUploadImport } from "@features/song/components/import/modes/song-upload-import";
 import { useTranslation } from "@i18n/use-translation";
-
-const ACCEPTED_FORMATS: string[] = ["ab-song"];
 
 const TABS = {
   upload: "upload",
@@ -23,7 +21,7 @@ export const SongImport: FC = () => {
         </TabsTrigger>
       </TabsList>
       <TabsContent value={TABS.upload}>
-        <FileUpload acceptedFormats={ACCEPTED_FORMATS} />
+        <SongUploadImport />
       </TabsContent>
       <TabsContent value={TABS.url}>
         <p>Import from URL is not yet implemented.</p>

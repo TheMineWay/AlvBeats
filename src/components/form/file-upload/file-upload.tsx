@@ -1,23 +1,34 @@
 import { cn } from "@/lib/utils";
+import { UseFileUpload } from "@components/form/file-upload/use-file-upload";
 import { useTranslation } from "@i18n/use-translation";
 import { File } from "lucide-react";
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, useRef } from "react";
 
 export type FileUploadProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  "type" | "accept"
+  "type" | "accept" | "max"
 > & {
   onFileChange?: (file: File | null) => void;
-  acceptedFormats?: string[];
+  manager: UseFileUpload;
 };
 
 export const FileUpload: FC<FileUploadProps> = ({
   onFileChange,
   className,
-  acceptedFormats = [],
+  manager,
+  onChange,
   ...props
 }) => {
   const { t, interpolated } = useTranslation("common");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const { acceptedFormats, files, setFiles, maxFiles } = manager;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFiles(Array.from(e.target.files));
+    }
+  };
 
   return (
     <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-gray-300 hover:border-primary rounded-2xl cursor-pointer bg-background transition-colors">
@@ -41,9 +52,16 @@ export const FileUpload: FC<FileUploadProps> = ({
             )}
           </p>
         )}
+        <div className="flex items-center justify-center gap-2 w-full px-4 py-2 mt-2 text-sm bg-background rounded-lg">
+          {files.map((f) => (
+            <span key={f.name}>{f.name}</span>
+          ))}
+        </div>
       </div>
       <input
         {...props}
+        max={maxFiles}
+        ref={inputRef}
         accept={
           acceptedFormats.length > 0
             ? acceptedFormats.map((f) => `.${f}`).join(",")
@@ -51,6 +69,10 @@ export const FileUpload: FC<FileUploadProps> = ({
         }
         type="file"
         className={cn(className, "hidden")}
+        onChange={(e) => {
+          onChange?.(e);
+          handleChange(e);
+        }}
       />
     </label>
   );
