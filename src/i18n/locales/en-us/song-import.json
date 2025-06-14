@@ -1,6 +1,14 @@
 {
   "importer": {
     "Title": "Song Import",
-    "Description": "Import songs so they become available in your offline library."
+    "Description": "Import songs so they become available in your offline library.",
+    "modes": {
+      "upload": {
+        "Title": "Upload"
+      },
+      "url": {
+        "Title": "URL"
+      }
+    }
   }
 }
