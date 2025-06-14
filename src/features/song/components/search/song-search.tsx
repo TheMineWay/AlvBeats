@@ -28,7 +28,7 @@ export const SongSearch: FC<Props> = ({ search, setSearch }) => {
       </div>
 
       {/* Dialogs */}
-      <SongImportModal open={isImportOpen} />
+      <SongImportModal setOpen={setIsImportOpen} open={isImportOpen} />
     </>
   );
 };

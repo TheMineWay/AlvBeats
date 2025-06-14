@@ -30,5 +30,13 @@ export default tseslint.config(
         }
       ]
     },
+    "overrides": [
+    {
+      "files": ["src/components/ui/**/*.{js,jsx,ts,tsx}"],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ]
   },
 )
