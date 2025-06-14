@@ -1,5 +1,5 @@
-import { StoredSong } from "@/models/song/stored-song.model";
 import { SearchMethod } from "@/utils/search/use-search";
+import { StoredSong } from "@features/song/components/models/stored-song.model";
 
 export const storedSongSearcher: SearchMethod<StoredSong> = (
   query,

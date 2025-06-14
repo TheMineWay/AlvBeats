@@ -1,5 +1,8 @@
-import { SONG_INDEX_SCHEMA, SongIndex } from "@/models/song/song-index.model";
 import { LOCAL_STORAGE_CONNECTOR_KEY } from "@constants/storage/storage-services.constant";
+import {
+  SONG_INDEX_SCHEMA,
+  SongIndex,
+} from "@features/song/components/models/song-index.model";
 import { WebWarehouse } from "@themineway/smart-storage-js";
 import { useConnectorWatch } from "@themineway/smart-storage-react";
 

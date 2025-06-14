@@ -1,8 +1,8 @@
 import { storedSongSearcher } from "@/utils/search/strategies/song-metadata-searcher.util";
 import { useSearch } from "@/utils/search/use-search";
 import { useSongIndex } from "@/utils/storage/use-song-index";
-import { SongList } from "@components/songs/list/song-list";
-import { SongSearch } from "@components/songs/search/song-search";
+import { SongList } from "@features/song/components/list/song-list";
+import { SongSearch } from "@features/song/components/search/song-search";
 
 export const StoredSongSearch: FC = () => {
   const { value: indexData } = useSongIndex();

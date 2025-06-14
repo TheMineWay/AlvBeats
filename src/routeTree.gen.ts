@@ -12,12 +12,19 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as PlayerSongIdImport } from './routes/player/$song-id'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PlayerSongIdRoute = PlayerSongIdImport.update({
+  id: '/player/$song-id',
+  path: '/player/$song-id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -32,6 +39,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/player/$song-id': {
+      id: '/player/$song-id'
+      path: '/player/$song-id'
+      fullPath: '/player/$song-id'
+      preLoaderRoute: typeof PlayerSongIdImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +53,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/player/$song-id': typeof PlayerSongIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/player/$song-id': typeof PlayerSongIdRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/player/$song-id': typeof PlayerSongIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/player/$song-id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/player/$song-id'
+  id: '__root__' | '/' | '/player/$song-id'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PlayerSongIdRoute: typeof PlayerSongIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PlayerSongIdRoute: PlayerSongIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +96,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/player/$song-id"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/player/$song-id": {
+      "filePath": "player/$song-id.tsx"
     }
   }
 }

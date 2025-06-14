@@ -1,4 +1,4 @@
-import { Homepage } from "@f-homepage/homepage";
+import { Homepage } from "@features/homepage/homepage";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({

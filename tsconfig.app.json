@@ -30,7 +30,7 @@
       "@i18n/*": ["./src/i18n/*"],
       "@constants/*": ["./src/constants/*"],
       "@shared/*": ["./src/types/*"],
-      "@f-homepage/*": ["./src/features/homepage/*"],
+      "@features/*": ["./src/features/*"],
       "@/*": ["./src/*"],
       "@pkg": ["./package.json"]
     }
