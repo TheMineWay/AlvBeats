@@ -1,3 +1,6 @@
 {
-  "Title": "Song Import"
+  "importer": {
+    "Title": "Song Import",
+    "Description": "Import songs so they become available in your offline library."
+  }
 }

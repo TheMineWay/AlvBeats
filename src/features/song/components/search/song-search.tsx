@@ -1,6 +1,6 @@
 import { Button } from "@components/ui/button";
 import { Input } from "@components/ui/input";
-import { SongImport } from "@features/song/components/import/song-import";
+import { SongImportModal } from "@features/song/components/import/song-import-modal";
 import { useTranslation } from "@i18n/use-translation";
 import { Plus } from "lucide-react";
 import { useState } from "react";
@@ -28,7 +28,7 @@ export const SongSearch: FC<Props> = ({ search, setSearch }) => {
       </div>
 
       {/* Dialogs */}
-      <SongImport open={isImportOpen} />
+      <SongImportModal open={isImportOpen} />
     </>
   );
 };
