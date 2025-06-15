@@ -36,7 +36,7 @@ export const useWakeLock = ({ disabled = false }: Options = {}) => {
         });
       }
     };
-  }, [wakeLock, disabled, isWakeLockSupported]);
+  }, [disabled, isWakeLockSupported]);
 
   return {
     wakeLock,
