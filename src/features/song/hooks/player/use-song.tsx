@@ -1,3 +1,4 @@
+import { useConfiguration } from "@/providers/configuration/use-configuration";
 import { Song } from "@/shared/schemas/song/song.schema";
 import { useTimer } from "@/shared/utils/time/use-timer";
 import { useWakeLock } from "@features/song/hooks/screen/use-wake-lock";
@@ -5,7 +6,10 @@ import { useMemo } from "react";
 
 export const useSong = (song: Song) => {
   const timer = useTimer({ maxTime: song.metadata.duration });
-  const wakeLock = useWakeLock();
+  const {
+    configuration: { player: playerConfig },
+  } = useConfiguration();
+  const wakeLock = useWakeLock({ disabled: !playerConfig.wakeLock });
 
   const duration = useMemo(() => {
     const maxDuration = song.lyrics.reduce((max, lyric) => {

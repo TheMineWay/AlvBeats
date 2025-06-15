@@ -1,5 +1,6 @@
 import { GithubIcon } from "@components/icons/brands/github.icon";
 import pkg from "@pkg";
+import { Rocket } from "lucide-react";
 import React from "react";
 
 /* Columns */
@@ -11,10 +12,19 @@ const SOCIAL: LinkInfo[] = [
   },
 ];
 
+const INFO: LinkInfo[] = [
+  {
+    label: pkg.version,
+    href: pkg.repository.url + "/deployments",
+    icon: (props) => <Rocket {...props} />,
+  },
+];
+
 export const Footer: FC = () => {
   return (
     <footer className="bg-foreground py-2 flex justify-center items-center gap-12">
       <Column links={SOCIAL} />
+      <Column links={INFO} />
     </footer>
   );
 };
@@ -22,7 +32,7 @@ export const Footer: FC = () => {
 /* Internal */
 
 type LinkInfo = {
-  icon: (props: React.SVGProps<SVGSVGElement>) => ReactNode;
+  icon?: (props: React.SVGProps<SVGSVGElement>) => ReactNode;
   label: string;
 } & Pick<React.HTMLProps<HTMLAnchorElement>, "href">;
 
@@ -34,7 +44,7 @@ const Link: FC<LinkInfo> = ({ icon, label, href }) => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      {icon({ fill: "var(--background)", className: "h-6 w-6" })}
+      {icon?.({ fill: "var(--background)", className: "h-6 w-6" })}
       <span className="text-background">{label}</span>
     </a>
   );
