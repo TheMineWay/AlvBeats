@@ -1,7 +1,9 @@
 import { Button } from "@components/ui/button";
 import { Input } from "@components/ui/input";
+import { SongImportModal } from "@features/song/components/import/song-import-modal";
 import { useTranslation } from "@i18n/use-translation";
-import { SearchIcon } from "lucide-react";
+import { Plus } from "lucide-react";
+import { useState } from "react";
 
 type Props = {
   search: string;
@@ -10,17 +12,23 @@ type Props = {
 
 export const SongSearch: FC<Props> = ({ search, setSearch }) => {
   const { t } = useTranslation("song-search");
+  const [isImportOpen, setIsImportOpen] = useState(false);
 
   return (
-    <div className="flex gap-2">
-      <Input
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder={t().forms.search.fields.query.Placeholder}
-      />
-      <Button size="icon">
-        <SearchIcon />
-      </Button>
-    </div>
+    <>
+      <div className="flex gap-2">
+        <Input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder={t().forms.search.fields.query.Placeholder}
+        />
+        <Button size="icon" onClick={() => setIsImportOpen(true)}>
+          <Plus />
+        </Button>
+      </div>
+
+      {/* Dialogs */}
+      <SongImportModal setOpen={setIsImportOpen} open={isImportOpen} />
+    </>
   );
 };

@@ -7,5 +7,12 @@
     "Play": "Play",
     "Pause": "Pause",
     "Stop": "Stop"
+  },
+  "components": {
+    "file-upload": {
+      "click-to-upload": "Click to upload",
+      "drag-and-drop": "or drag and drop",
+      "accepted-formats": "Accepted formats: {formats}"
+    }
   }
 }
