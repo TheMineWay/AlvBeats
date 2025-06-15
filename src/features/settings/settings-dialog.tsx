@@ -1,7 +1,6 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@components/ui/dialog";
@@ -22,9 +21,7 @@ export const SettingsDialog: FC<Props> = ({ open, setOpen }) => {
         <DialogHeader>
           <DialogTitle>{t().dialog.Title}</DialogTitle>
         </DialogHeader>
-        <DialogDescription>
-          <Settings />
-        </DialogDescription>
+        <Settings onConfigApply={() => setOpen(false)} />
       </DialogContent>
     </Dialog>
   );

@@ -1,22 +1,110 @@
+import {
+  Configuration,
+  CONFIGURATION_SCHEMA,
+  DEFAULT_CONFIGURATION,
+} from "@/providers/configuration/configuration.context";
+import { useConfiguration } from "@/providers/configuration/use-configuration";
+import { Button } from "@components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@components/ui/form";
+import { Switch } from "@components/ui/switch";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "@i18n/use-translation";
+import { useCallback } from "react";
+import { useForm } from "react-hook-form";
 
 const SECTION_TITLE_CLASS = "text-lg font-semibold";
 const SECTION_CONTAINER_CLASS = "flex flex-col gap-2";
+const BOOLEAN_ITEM_CLASS = "flex items-center justify-between gap-2";
 
-export const Settings: FC = () => {
+type Props = {
+  onConfigApply?: CallableFunction;
+};
+
+export const Settings: FC<Props> = ({ onConfigApply }) => {
+  const { t } = useTranslation("settings");
+  const { setConfiguration } = useConfiguration();
+  const configForm = useSettingsForm();
+
+  // Actions
+
+  const submit = useCallback(
+    (data: Configuration) => {
+      setConfiguration(data);
+      onConfigApply?.();
+    },
+    [setConfiguration]
+  );
+
+  const applyDefault = useCallback(() => {
+    setConfiguration(DEFAULT_CONFIGURATION);
+    onConfigApply?.();
+  }, [setConfiguration]);
+
+  // UI
+
   return (
-    <div className="flex flex-col gap-2">
-      <Theme />
-    </div>
+    <Form {...configForm}>
+      <form
+        onSubmit={configForm.handleSubmit(submit)}
+        className="flex flex-col gap-2"
+      >
+        <div className="flex flex-col gap-2 w-full">
+          <Lyrics form={configForm} />
+        </div>
+        <div className="flex gap-2 w-full justify-center">
+          <Button>{t().form.actions.Apply}</Button>
+          <Button variant="outline" onClick={applyDefault}>
+            {t().form.actions["Reset-to-default"]}
+          </Button>
+        </div>
+      </form>
+    </Form>
   );
 };
 
-const Theme: FC = () => {
+/* SEGMENTS */
+
+type SegmentProps = {
+  form: ReturnType<typeof useSettingsForm>;
+};
+
+const Lyrics: FC<SegmentProps> = ({ form }) => {
   const { t } = useTranslation("settings");
 
   return (
     <div className={SECTION_CONTAINER_CLASS}>
-      <h2 className={SECTION_TITLE_CLASS}>{t().sections.theme.Title}</h2>
+      <h2 className={SECTION_TITLE_CLASS}>{t().form.sections.lyrics.Title}</h2>
+      {/* Progress indicator */}
+      <FormField
+        control={form.control}
+        name="player.lyricsProgress.showIndicator"
+        render={({ field }) => (
+          <FormItem className={BOOLEAN_ITEM_CLASS}>
+            <FormLabel>
+              {t().form.sections.lyrics.fields["show-progress"].Label}
+            </FormLabel>
+            <FormControl>
+              <Switch checked={field.value} onCheckedChange={field.onChange} />
+            </FormControl>
+          </FormItem>
+        )}
+      />
     </div>
   );
+};
+
+/* Internal */
+
+const useSettingsForm = () => {
+  const { configuration } = useConfiguration();
+  return useForm({
+    defaultValues: configuration,
+    resolver: zodResolver(CONFIGURATION_SCHEMA),
+  });
 };

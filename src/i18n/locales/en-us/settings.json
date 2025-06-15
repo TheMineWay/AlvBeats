@@ -2,9 +2,20 @@
   "dialog": {
     "Title": "Settings"
   },
-  "sections": {
-    "theme": {
-      "Title": "Theme"
+  "form": {
+    "sections": {
+      "lyrics": {
+        "Title": "Lyrics",
+        "fields": {
+          "show-progress": {
+            "Label": "Show progress bar"
+          }
+        }
+      }
+    },
+    "actions": {
+      "Apply": "Apply",
+      "Reset-to-default": "Reset to default"
     }
   }
 }

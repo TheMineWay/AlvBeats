@@ -19,12 +19,12 @@ export const ConfigurationProvider: FC<Props> = ({ children }) => {
   );
 
   const managedSetConfiguration = (newConfig: Configuration) => {
-    setConfiguration(newConfig);
     try {
       mainStorage.set<Configuration>(KEY, newConfig, CONFIGURATION_SCHEMA);
     } catch {
       setConfiguration(DEFAULT_CONFIGURATION);
     }
+    setConfiguration(newConfig);
   };
 
   return (
