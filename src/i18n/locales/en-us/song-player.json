@@ -3,5 +3,11 @@
     "not-found": {
       "Title": "Song not found"
     }
+  },
+  "alerts": {
+    "wake-lock-error": {
+      "Title": "Wake Lock Error",
+      "Description": "Your browser does not support wake lock API. This means that the screen may turn off while playing the song, which can interrupt playback."
+    }
   }
 }

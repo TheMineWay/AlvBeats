@@ -41,7 +41,7 @@ function RouteComponent() {
   }
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full px-4">
       <Player song={song} />
     </div>
   );
