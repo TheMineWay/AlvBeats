@@ -49,7 +49,7 @@
     "@radix-ui/react-switch": "^1.2.5",
     "@radix-ui/react-tabs": "^1.1.12",
     "@tailwindcss/vite": "^4.1.10",
-    "@tanstack/react-router": "^1.120.20",
+    "@tanstack/react-router": "^1.121.12",
     "@tanstack/react-router-devtools": "^1.120.20",
     "@themineway/smart-storage-js": "1.0.0-alpha.17",
     "@themineway/smart-storage-react": "1.0.0-alpha.13",
