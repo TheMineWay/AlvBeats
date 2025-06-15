@@ -1,9 +1,11 @@
 import { Song } from "@/shared/schemas/song/song.schema";
 import { useTimer } from "@/shared/utils/time/use-timer";
+import { useWakeLock } from "@features/song/hooks/screen/use-wake-lock";
 import { useMemo } from "react";
 
 export const useSong = (song: Song) => {
   const timer = useTimer({ maxTime: song.metadata.duration });
+  useWakeLock();
 
   const duration = useMemo(() => {
     const maxDuration = song.lyrics.reduce((max, lyric) => {
