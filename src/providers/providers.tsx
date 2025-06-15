@@ -1,5 +1,6 @@
 import { ConfigurationProvider } from "@/providers/configuration/configuration.provider";
 import LanguageProvider from "@/providers/language/language.provider";
+import { PostProviders } from "@/providers/post-providers";
 
 type Props = {
   children: React.ReactNode;
@@ -8,7 +9,9 @@ type Props = {
 const Providers: FC<Props> = ({ children }) => {
   return (
     <ConfigurationProvider>
-      <LanguageProvider>{children}</LanguageProvider>
+      <LanguageProvider>
+        <PostProviders>{children}</PostProviders>
+      </LanguageProvider>
     </ConfigurationProvider>
   );
 };

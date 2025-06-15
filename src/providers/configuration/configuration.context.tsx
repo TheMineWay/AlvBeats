@@ -1,3 +1,4 @@
+import { THEME_SCHEMA } from "@components/layout/navigation/actions/use-theme";
 import { createContext } from "react";
 import { z } from "zod";
 
@@ -17,6 +18,7 @@ export const CONFIGURATION_SCHEMA = z.object({
       showIndicator: z.boolean().default(true), // Show progress indicator for active lyrics
     }),
   }),
+  theme: THEME_SCHEMA,
 });
 
 export type Configuration = z.infer<typeof CONFIGURATION_SCHEMA>;
@@ -35,6 +37,10 @@ export const DEFAULT_CONFIGURATION: Configuration = {
     lyricsProgress: {
       showIndicator: true,
     },
+  },
+  theme: {
+    theme: null,
+    dark: false,
   },
 };
 
