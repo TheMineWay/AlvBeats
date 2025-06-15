@@ -5,6 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@components/ui/dialog";
+import { Settings } from "@features/settings/settings";
 import { useTranslation } from "@i18n/use-translation";
 
 type Props = {
@@ -21,7 +22,9 @@ export const SettingsDialog: FC<Props> = ({ open, setOpen }) => {
         <DialogHeader>
           <DialogTitle>{t().dialog.Title}</DialogTitle>
         </DialogHeader>
-        <DialogDescription></DialogDescription>
+        <DialogDescription>
+          <Settings />
+        </DialogDescription>
       </DialogContent>
     </Dialog>
   );

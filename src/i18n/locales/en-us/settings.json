@@ -1,5 +1,10 @@
 {
   "dialog": {
     "Title": "Settings"
+  },
+  "sections": {
+    "theme": {
+      "Title": "Theme"
+    }
   }
 }
