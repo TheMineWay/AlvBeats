@@ -1,4 +1,5 @@
 import { SONG_METADATA_SCHEMA } from "@/shared/schemas/song/metadata/song-metadata.schema";
+import { isDate } from "lodash";
 import { z } from "zod";
 
 export const STORED_SONG_SCHEMA = z.object({
@@ -6,7 +7,8 @@ export const STORED_SONG_SCHEMA = z.object({
   metadata: SONG_METADATA_SCHEMA,
   addedAt: z
     .string()
-    .refine((val) => !isNaN(Date.parse(val)))
+    .or(z.date())
+    .refine((val) => (isDate(val) ? val : !isNaN(Date.parse(val))))
     .transform((val) => new Date(val))
     .default(new Date().toString()),
 });

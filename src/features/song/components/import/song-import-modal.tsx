@@ -23,7 +23,7 @@ export const SongImportModal: FC<Props> = ({ open = false, setOpen }) => {
           <DialogTitle>{t().importer.Title}</DialogTitle>
           <DialogDescription>{t().importer.Description}</DialogDescription>
           <div className="pt-2">
-            <SongImport />
+            <SongImport onImported={() => setOpen(false)} />
           </div>
         </DialogHeader>
       </DialogContent>

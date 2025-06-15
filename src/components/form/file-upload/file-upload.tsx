@@ -10,6 +10,7 @@ export type FileUploadProps = Omit<
 > & {
   onFileChange?: (file: File | null) => void;
   manager: UseFileUpload;
+  loading?: boolean;
 };
 
 export const FileUpload: FC<FileUploadProps> = ({
@@ -17,6 +18,7 @@ export const FileUpload: FC<FileUploadProps> = ({
   className,
   manager,
   onChange,
+  loading = false,
   ...props
 }) => {
   const { t, interpolated } = useTranslation("common");
@@ -60,6 +62,7 @@ export const FileUpload: FC<FileUploadProps> = ({
       </div>
       <input
         {...props}
+        disabled={loading || props.disabled}
         max={maxFiles}
         ref={inputRef}
         accept={

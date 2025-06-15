@@ -2,6 +2,7 @@
   "importer": {
     "Title": "Song Import",
     "Description": "Import songs so they become available in your offline library.",
+    "Error": "There was an error processing the uploaded files.",
     "modes": {
       "upload": {
         "Title": "Upload"
@@ -9,6 +10,10 @@
       "url": {
         "Title": "URL"
       }
+    },
+    "preview": {
+      "Title": "Songs that will be imported",
+      "Import": "Import songs"
     }
   }
 }
