@@ -1,7 +1,6 @@
 import {
   Configuration,
   CONFIGURATION_SCHEMA,
-  DEFAULT_CONFIGURATION,
 } from "@/providers/configuration/configuration.context";
 import { useConfiguration } from "@/providers/configuration/use-configuration";
 import { Button } from "@components/ui/button";
@@ -41,27 +40,19 @@ export const Settings: FC<Props> = ({ onConfigApply }) => {
     [setConfiguration]
   );
 
-  const applyDefault = useCallback(() => {
-    setConfiguration(DEFAULT_CONFIGURATION);
-    onConfigApply?.();
-  }, [setConfiguration]);
-
   // UI
 
   return (
     <Form {...configForm}>
       <form
         onSubmit={configForm.handleSubmit(submit)}
-        className="flex flex-col gap-2"
+        className="flex flex-col gap-4"
       >
         <div className="flex flex-col gap-2 w-full">
           <Lyrics form={configForm} />
         </div>
         <div className="flex gap-2 w-full justify-center">
-          <Button>{t().form.actions.Apply}</Button>
-          <Button variant="outline" onClick={applyDefault}>
-            {t().form.actions["Reset-to-default"]}
-          </Button>
+          <Button className="w-full">{t().form.actions.Apply}</Button>
         </div>
       </form>
     </Form>

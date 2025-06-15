@@ -4,8 +4,10 @@ import {
   CONFIGURATION_SCHEMA,
   DEFAULT_CONFIGURATION,
 } from "@/providers/configuration/configuration.context";
-import { mainStorage } from "@/utils/storage/main-storage.service";
-import { useState } from "react";
+import { LOCAL_STORAGE_CONNECTOR_KEY } from "@constants/storage/storage-services.constant";
+import { WebWarehouse } from "@themineway/smart-storage-js";
+import { useConnectorWatch } from "@themineway/smart-storage-react";
+import { useCallback } from "react";
 
 const KEY = "config";
 
@@ -14,13 +16,24 @@ type Props = {
 };
 
 export const ConfigurationProvider: FC<Props> = ({ children }) => {
-  const [configuration, setConfiguration] = useState<Configuration>(
-    getConfiguration()
+  const { value, connector } = useConnectorWatch<Configuration>(
+    WebWarehouse.getConnector(LOCAL_STORAGE_CONNECTOR_KEY),
+    KEY,
+    CONFIGURATION_SCHEMA
+  );
+
+  const configuration = value ?? DEFAULT_CONFIGURATION;
+
+  const setConfiguration = useCallback(
+    (config: Configuration) => {
+      connector.set<Configuration>(KEY, config, CONFIGURATION_SCHEMA);
+    },
+    [connector]
   );
 
   const managedSetConfiguration = (newConfig: Configuration) => {
     try {
-      mainStorage.set<Configuration>(KEY, newConfig, CONFIGURATION_SCHEMA);
+      connector.set<Configuration>(KEY, newConfig, CONFIGURATION_SCHEMA);
     } catch {
       setConfiguration(DEFAULT_CONFIGURATION);
     }
@@ -29,20 +42,12 @@ export const ConfigurationProvider: FC<Props> = ({ children }) => {
 
   return (
     <CONFIGURATION_CONTEXT.Provider
-      value={{ configuration, setConfiguration: managedSetConfiguration }}
+      value={{
+        configuration,
+        setConfiguration: managedSetConfiguration,
+      }}
     >
       {children}
     </CONFIGURATION_CONTEXT.Provider>
   );
-};
-
-const getConfiguration = (): Configuration => {
-  try {
-    return (
-      mainStorage.get<Configuration>(KEY, CONFIGURATION_SCHEMA) ??
-      DEFAULT_CONFIGURATION
-    );
-  } catch {
-    return DEFAULT_CONFIGURATION;
-  }
 };
