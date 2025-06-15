@@ -35,6 +35,9 @@
       },
       "song-editor": {
         "Title": "Song editor"
+      },
+      "settings": {
+        "Title": "Settings"
       }
     }
   }

@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 
-export const useWakeLock = () => {
+type Options = {
+  disabled?: boolean;
+};
+
+export const useWakeLock = ({ disabled = false }: Options = {}) => {
   const [wakeLock, setWakeLock] = useState<WakeLockSentinel | null>();
 
   const isWakeLockSupported = "wakeLock" in navigator;
 
   const request = () => {
+    if (disabled) return;
+
     if (isWakeLockSupported) {
       return navigator.wakeLock.request("screen");
     }
@@ -30,7 +36,7 @@ export const useWakeLock = () => {
         });
       }
     };
-  }, [wakeLock]);
+  }, [disabled, isWakeLockSupported]);
 
   return {
     wakeLock,

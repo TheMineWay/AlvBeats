@@ -1,0 +1,40 @@
+{
+  "dialog": {
+    "Title": "Settings"
+  },
+  "form": {
+    "sections": {
+      "lyrics": {
+        "Title": "Lyrics",
+        "fields": {
+          "show-progress": {
+            "Label": "Show progress bar"
+          },
+          "anterior-offset": {
+            "Label": "Anterior offset"
+          },
+          "posterior-offset": {
+            "Label": "Posterior offset"
+          },
+          "start-timestamp": {
+            "Label": "Start timestamp"
+          },
+          "end-timestamp": {
+            "Label": "End timestamp"
+          }
+        }
+      },
+      "screen": {
+        "Title": "Screen",
+        "fields": {
+          "wake-lock": {
+            "Label": "Wake lock"
+          }
+        }
+      }
+    },
+    "actions": {
+      "Apply": "Apply"
+    }
+  }
+}
