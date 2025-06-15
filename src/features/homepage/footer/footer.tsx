@@ -15,7 +15,7 @@ const SOCIAL: LinkInfo[] = [
 const INFO: LinkInfo[] = [
   {
     label: pkg.version,
-    href: pkg.repository.url + "/deployments",
+    href: pkg.repository.url + "/releases",
     icon: (props) => <Rocket {...props} />,
   },
 ];
