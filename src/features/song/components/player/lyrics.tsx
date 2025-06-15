@@ -1,9 +1,8 @@
 import { cn } from "@/lib/utils";
+import { useConfiguration } from "@/providers/configuration/use-configuration";
 import { formatDuration } from "@/shared/utils/time/format-duration";
 import { UseSong } from "@features/song/hooks/player/use-song";
-import { useCallback } from "react";
-
-const MAX_OFFSET_LINES = 2;
+import { useCallback, useMemo } from "react";
 
 type Props = {
   songManager: UseSong;
@@ -12,10 +11,23 @@ type Props = {
 export const Lyrics: FC<Props> = ({ songManager }) => {
   const { lyrics: _lyrics, activeLyric } = songManager;
 
-  const lyrics = _lyrics.slice(
-    Math.min(activeLyric.index, _lyrics.length - (MAX_OFFSET_LINES + 1)),
-    Math.min(_lyrics.length, activeLyric.index + MAX_OFFSET_LINES + 1)
-  );
+  const {
+    configuration: {
+      player: { lyricsOffset },
+    },
+  } = useConfiguration();
+
+  const lyrics = useMemo(() => {
+    return _lyrics.slice(
+      Math.min(activeLyric.index, _lyrics.length - (lyricsOffset.anterior + 1)),
+      Math.min(_lyrics.length, activeLyric.index + lyricsOffset.posterior + 1)
+    );
+  }, [
+    _lyrics,
+    activeLyric.index,
+    lyricsOffset.anterior,
+    lyricsOffset.posterior,
+  ]);
 
   return (
     <div>
