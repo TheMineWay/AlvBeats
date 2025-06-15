@@ -11,7 +11,7 @@ import {
 import { WebWarehouse } from "@themineway/smart-storage-js";
 import { useConnectorWatch } from "@themineway/smart-storage-react";
 import _ from "lodash";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 
 const DEFAULT_LANGUAGE = MASTER_LOCALE;
@@ -58,16 +58,22 @@ export default function LanguageProvider({ children }: Readonly<Props>) {
     updateLoadedLocale();
   }, [language]);
 
-  if (!translations) return null;
+  const contextValue = useMemo(
+    () =>
+      translations
+        ? {
+            language,
+            setLanguage,
+            translations,
+          }
+        : undefined,
+    [language, setLanguage, translations]
+  );
+
+  if (!contextValue) return null;
 
   return (
-    <LanguageContext.Provider
-      value={{
-        language,
-        setLanguage,
-        translations,
-      }}
-    >
+    <LanguageContext.Provider value={contextValue}>
       {children}
     </LanguageContext.Provider>
   );
