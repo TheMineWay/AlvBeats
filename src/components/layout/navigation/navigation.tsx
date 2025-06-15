@@ -1,5 +1,5 @@
 import { DarkModeSwitch } from "@components/layout/navigation/actions/dark-mode-switch";
-import { ThemeSelector } from "@components/layout/navigation/actions/theme-selector";
+import { LanguageSelector } from "@components/layout/navigation/actions/language-selector";
 import { Badge } from "@components/ui/badge";
 import { Button } from "@components/ui/button";
 import {
@@ -35,7 +35,7 @@ export const Navigation: FC = () => {
       </NavigationMenu>
       <div className="flex items-center gap-4">
         <DarkModeSwitch />
-        <ThemeSelector />
+        <LanguageSelector />
       </div>
     </div>
   );
