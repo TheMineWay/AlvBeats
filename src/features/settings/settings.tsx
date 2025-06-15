@@ -89,6 +89,7 @@ const Lyrics: FC<SegmentProps> = ({ form }) => {
         )}
       />
       <hr />
+      {/* Lyrics offsets */}
       <FormField
         control={form.control}
         name="player.lyricsOffset.anterior"
@@ -111,6 +112,37 @@ const Lyrics: FC<SegmentProps> = ({ form }) => {
             max={3}
             label={t().form.sections.lyrics.fields["posterior-offset"].Label}
           />
+        )}
+      />
+
+      <hr />
+      {/* Timestamps */}
+      <FormField
+        control={form.control}
+        name="player.lyricsTimestamps.showStart"
+        render={({ field }) => (
+          <FormItem className={BOOLEAN_ITEM_CLASS}>
+            <FormLabel>
+              {t().form.sections.lyrics.fields["start-timestamp"].Label}
+            </FormLabel>
+            <FormControl>
+              <Switch checked={field.value} onCheckedChange={field.onChange} />
+            </FormControl>
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="player.lyricsTimestamps.showEnd"
+        render={({ field }) => (
+          <FormItem className={BOOLEAN_ITEM_CLASS}>
+            <FormLabel>
+              {t().form.sections.lyrics.fields["end-timestamp"].Label}
+            </FormLabel>
+            <FormControl>
+              <Switch checked={field.value} onCheckedChange={field.onChange} />
+            </FormControl>
+          </FormItem>
         )}
       />
     </div>

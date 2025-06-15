@@ -15,6 +15,12 @@
           },
           "posterior-offset": {
             "Label": "Posterior offset"
+          },
+          "start-timestamp": {
+            "Label": "Start timestamp"
+          },
+          "end-timestamp": {
+            "Label": "End timestamp"
           }
         }
       },

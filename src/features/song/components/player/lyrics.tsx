@@ -44,6 +44,14 @@ type ItemProps = {
 };
 
 const Item: FC<ItemProps> = ({ item, songManager }) => {
+  const {
+    configuration: {
+      player: { lyricsTimestamps },
+    },
+  } = useConfiguration();
+
+  const isAnyTimestamp = lyricsTimestamps.showStart || lyricsTimestamps.showEnd;
+
   const onClick = useCallback(() => {
     if (item.isActive) return;
 
@@ -54,19 +62,29 @@ const Item: FC<ItemProps> = ({ item, songManager }) => {
   }, [item.data.startTime, item.isActive, songManager.timer]);
 
   return (
-    <p
-      className={cn("text-center", {
-        ["font-bold text-xl"]: item.isActive,
-        ["hover:underline cursor-pointer"]: !item.isActive,
-      })}
-      onClick={onClick}
-    >
-      <i>{formatDuration(item.data.startTime)} </i>- {item.data.text}
-      {item.data.endTime ? (
-        <i>{` - ${formatDuration(item.data.endTime)}`}</i>
-      ) : (
-        ""
+    <div
+      className={cn(
+        "text-center flex gap-4 items-center",
+        isAnyTimestamp ? "justify-between" : "justify-center",
+        item.isActive ? "font-bold text-xl" : "hover:underline cursor-pointer"
       )}
-    </p>
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+    >
+      {lyricsTimestamps.showStart && (
+        <small className="text-xs">{formatDuration(item.data.startTime)}</small>
+      )}
+      <p className="text-center">{item.data.text}</p>
+      {item.data.endTime && lyricsTimestamps.showEnd && (
+        <small className="text-xs">{formatDuration(item.data.endTime)}</small>
+      )}
+    </div>
   );
 };

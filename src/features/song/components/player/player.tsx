@@ -16,12 +16,12 @@ export const Player: FC<Props> = ({ song }) => {
   const { configuration } = useConfiguration();
 
   return (
-    <div className="flex flex-col justify-between items-center w-full min-w-12 h-full py-5">
+    <div className="flex flex-col justify-between items-center w-full min-w-12 h-full pt-6 pb-10">
       <div className="flex flex-col justify-center gap-1 w-full max-w-md">
         {!songManager.wakeLock.isWakeLockSupported && <WakeLockError />}
         <SongItem song={song} className="max-w-md" />
       </div>
-      <div className="flex flex-col gap-2 w-full max-w-md">
+      <div className="flex flex-col gap-2 w-full max-w-xl">
         {configuration.player.lyricsProgress.showIndicator && (
           <LyricProgress songManager={songManager} />
         )}
