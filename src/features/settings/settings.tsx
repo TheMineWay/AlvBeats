@@ -49,7 +49,8 @@ export const Settings: FC<Props> = ({ onConfigApply }) => {
         onSubmit={configForm.handleSubmit(submit)}
         className="flex flex-col gap-4"
       >
-        <div className="flex flex-col gap-2 w-full">
+        <div className="flex flex-col gap-6 w-full">
+          <Screen form={configForm} />
           <Lyrics form={configForm} />
         </div>
         <div className="flex gap-2 w-full justify-center">
@@ -110,6 +111,30 @@ const Lyrics: FC<SegmentProps> = ({ form }) => {
             max={3}
             label={t().form.sections.lyrics.fields["posterior-offset"].Label}
           />
+        )}
+      />
+    </div>
+  );
+};
+
+const Screen: FC<SegmentProps> = ({ form }) => {
+  const { t } = useTranslation("settings");
+
+  return (
+    <div className={SECTION_CONTAINER_CLASS}>
+      <h2 className={SECTION_TITLE_CLASS}>{t().form.sections.screen.Title}</h2>
+      <FormField
+        control={form.control}
+        name="player.wakeLock"
+        render={({ field }) => (
+          <FormItem className={BOOLEAN_ITEM_CLASS}>
+            <FormLabel>
+              {t().form.sections.screen.fields["wake-lock"].Label}
+            </FormLabel>
+            <FormControl>
+              <Switch checked={field.value} onCheckedChange={field.onChange} />
+            </FormControl>
+          </FormItem>
         )}
       />
     </div>

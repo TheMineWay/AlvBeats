@@ -17,6 +17,14 @@
             "Label": "Posterior offset"
           }
         }
+      },
+      "screen": {
+        "Title": "Screen",
+        "fields": {
+          "wake-lock": {
+            "Label": "Wake lock"
+          }
+        }
       }
     },
     "actions": {
