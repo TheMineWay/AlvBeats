@@ -19,7 +19,7 @@ export const Lyrics: FC<Props> = ({ songManager }) => {
 
   const lyrics = useMemo(() => {
     return _lyrics.slice(
-      Math.min(activeLyric.index, _lyrics.length - (lyricsOffset.anterior + 1)),
+      Math.max(0, activeLyric.index - lyricsOffset.anterior),
       Math.min(_lyrics.length, activeLyric.index + lyricsOffset.posterior + 1)
     );
   }, [
