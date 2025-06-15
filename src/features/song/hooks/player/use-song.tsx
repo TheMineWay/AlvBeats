@@ -5,7 +5,7 @@ import { useMemo } from "react";
 
 export const useSong = (song: Song) => {
   const timer = useTimer({ maxTime: song.metadata.duration });
-  useWakeLock();
+  const wakeLock = useWakeLock();
 
   const duration = useMemo(() => {
     const maxDuration = song.lyrics.reduce((max, lyric) => {
@@ -49,6 +49,7 @@ export const useSong = (song: Song) => {
     activeLyric,
     duration,
     song,
+    wakeLock,
   };
 };
 
