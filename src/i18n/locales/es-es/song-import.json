@@ -1,1 +1,15 @@
-{}
+{
+  "importer": {
+    "Title": "Importar canciones",
+    "Description": "Importa canciones para que estén disponibles en tu biblioteca sin conexión.",
+    "Error": "Hubo un error al procesar los archivos subidos.",
+    "modes": {
+      "upload": { "Title": "Subir" },
+      "url": { "Title": "URL" }
+    },
+    "preview": {
+      "Title": "Canciones que se importarán",
+      "Import": "Importar canciones"
+    }
+  }
+}

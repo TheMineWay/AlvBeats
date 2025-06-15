@@ -1,0 +1,15 @@
+{
+  "importer": {
+    "Title": "Importera låtar",
+    "Description": "Importera låtar så att de blir tillgängliga i ditt offlinebibliotek.",
+    "Error": "Ett fel uppstod vid bearbetning av de uppladdade filerna.",
+    "modes": {
+      "upload": { "Title": "Ladda upp" },
+      "url": { "Title": "URL" }
+    },
+    "preview": {
+      "Title": "Låtar som kommer att importeras",
+      "Import": "Importera låtar"
+    }
+  }
+}

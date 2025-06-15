@@ -1,0 +1,24 @@
+{
+  "sentences": {
+    "Coming-soon": "Kommer snart",
+    "Back-home": "Tillbaka hem"
+  },
+  "words": {
+    "Play": "Spela",
+    "Pause": "Paus",
+    "Stop": "Stopp"
+  },
+  "components": {
+    "file-upload": {
+      "click-to-upload": "Klicka för att ladda upp",
+      "drag-and-drop": "eller dra och släpp",
+      "accepted-formats": "Godkända format: {formats}"
+    }
+  },
+  "languages": {
+    "en": { "Name": "Engelska" },
+    "es": { "Name": "Spanska" },
+    "ca": { "Name": "Katalanska" },
+    "sv": { "Name": "Svenska" }
+  }
+}
