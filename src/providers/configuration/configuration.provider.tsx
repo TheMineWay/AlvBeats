@@ -1,7 +1,7 @@
 import {
   Configuration,
-  CONFIGURATION_CONTEXT,
   CONFIGURATION_SCHEMA,
+  ConfigurationContext,
   DEFAULT_CONFIGURATION,
 } from "@/providers/configuration/configuration.context";
 import { LOCAL_STORAGE_CONNECTOR_KEY } from "@constants/storage/storage-services.constant";
@@ -41,13 +41,13 @@ export const ConfigurationProvider: FC<Props> = ({ children }) => {
   };
 
   return (
-    <CONFIGURATION_CONTEXT.Provider
+    <ConfigurationContext.Provider
       value={{
         configuration,
         setConfiguration: managedSetConfiguration,
       }}
     >
       {children}
-    </CONFIGURATION_CONTEXT.Provider>
+    </ConfigurationContext.Provider>
   );
 };

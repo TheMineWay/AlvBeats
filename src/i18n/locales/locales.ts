@@ -1,6 +1,7 @@
 import { Language } from "@i18n/language.enum.ts";
 
 export const MASTER_LOCALE = Language.EN_US;
+export const AVAILABLE_LOCALES = [Language.EN_US, Language.ES_ES] as const;
 
 const LOCALES = {
   [Language.EN_US]: () => import("./en-us/locale.ts"),

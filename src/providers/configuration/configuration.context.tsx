@@ -38,7 +38,7 @@ export const DEFAULT_CONFIGURATION: Configuration = {
   },
 };
 
-export const CONFIGURATION_CONTEXT = createContext<{
+export const ConfigurationContext = createContext<{
   configuration: Configuration;
   setConfiguration: (configuration: Configuration) => void;
 }>(null!);

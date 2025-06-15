@@ -1,8 +1,8 @@
-import { CONFIGURATION_CONTEXT } from "@/providers/configuration/configuration.context";
+import { ConfigurationContext } from "@/providers/configuration/configuration.context";
 import { useContext } from "react";
 
 export const useConfiguration = () => {
-  const context = useContext(CONFIGURATION_CONTEXT);
+  const context = useContext(ConfigurationContext);
 
   if (!context) {
     throw new Error(

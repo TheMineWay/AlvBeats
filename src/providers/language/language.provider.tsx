@@ -1,20 +1,44 @@
 import {
-  LANGUAGE_CONTEXT,
+  LanguageContext,
   TranslationStore,
 } from "@/providers/language/language.context";
-import { getLocale, MASTER_LOCALE } from "@i18n/locales/locales";
+import { LOCAL_STORAGE_CONNECTOR_KEY } from "@constants/storage/storage-services.constant";
+import {
+  AVAILABLE_LOCALES,
+  getLocale,
+  MASTER_LOCALE,
+} from "@i18n/locales/locales";
+import { WebWarehouse } from "@themineway/smart-storage-js";
+import { useConnectorWatch } from "@themineway/smart-storage-react";
 import _ from "lodash";
 import { useEffect, useState } from "react";
+import { z } from "zod";
 
 const DEFAULT_LANGUAGE = MASTER_LOCALE;
+const LANGUAGE_SCHEMA = z.object({
+  lang: z.enum(AVAILABLE_LOCALES).default(DEFAULT_LANGUAGE),
+});
+
+type Language = z.infer<typeof LANGUAGE_SCHEMA>;
+
+const KEY = "lang";
 
 type Props = {
   children: React.ReactNode;
 };
 
 export default function LanguageProvider({ children }: Readonly<Props>) {
-  const [language, setLanguage] = useState(DEFAULT_LANGUAGE);
+  const { value: _language, connector } = useConnectorWatch<Language>(
+    WebWarehouse.getConnector(LOCAL_STORAGE_CONNECTOR_KEY),
+    KEY,
+    LANGUAGE_SCHEMA
+  );
+  const language = _language?.lang ?? DEFAULT_LANGUAGE;
   const [translations, setTranslations] = useState<TranslationStore>();
+
+  const setLanguage = (lang: Language["lang"]) => {
+    connector.set<Language>(KEY, { lang }, LANGUAGE_SCHEMA);
+  };
 
   useEffect(() => {
     const updateLoadedLocale = async () => {
@@ -37,7 +61,7 @@ export default function LanguageProvider({ children }: Readonly<Props>) {
   if (!translations) return null;
 
   return (
-    <LANGUAGE_CONTEXT.Provider
+    <LanguageContext.Provider
       value={{
         language,
         setLanguage,
@@ -45,6 +69,6 @@ export default function LanguageProvider({ children }: Readonly<Props>) {
       }}
     >
       {children}
-    </LANGUAGE_CONTEXT.Provider>
+    </LanguageContext.Provider>
   );
 }
