@@ -11,12 +11,9 @@ import {
 } from "@components/ui/navigation-menu";
 import { useTranslation } from "@i18n/use-translation";
 import { Link } from "@tanstack/react-router";
-import { Home, Menu } from "lucide-react";
+import { Edit, Home, Menu, Settings } from "lucide-react";
 
 export const Navigation: FC = () => {
-  const { t: commonT } = useTranslation("common");
-  const { t } = useTranslation("layout");
-
   return (
     <div className="h-full flex items-center justify-between p-2 bg-background/70 backdrop-blur-md">
       <NavigationMenu>
@@ -26,14 +23,7 @@ export const Navigation: FC = () => {
               <Menu />
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-              <div className="relative inline-block">
-                <Button variant="outline" disabled>
-                  {t().navigation.actions["song-editor"].Title}
-                </Button>
-                <Badge className="absolute -top-2 -right-2">
-                  {commonT().sentences["Coming-soon"]}
-                </Badge>
-              </div>
+              <MenuContent />
             </NavigationMenuContent>
           </NavigationMenuItem>
           <Link to="/">
@@ -45,6 +35,27 @@ export const Navigation: FC = () => {
         <DarkModeSwitch />
         <ThemeSelector />
       </div>
+    </div>
+  );
+};
+
+const MenuContent: FC = () => {
+  const { t: commonT } = useTranslation("common");
+  const { t } = useTranslation("layout");
+
+  return (
+    <div className="flex flex-col gap-2 p-1">
+      <div className="relative inline-block">
+        <Button variant="outline" disabled>
+          <Edit /> {t().navigation.actions["song-editor"].Title}
+        </Button>
+        <Badge className="absolute -top-2 -right-2">
+          {commonT().sentences["Coming-soon"]}
+        </Badge>
+      </div>
+      <Button variant="outline">
+        <Settings /> {t().navigation.actions.settings.Title}
+      </Button>
     </div>
   );
 };
