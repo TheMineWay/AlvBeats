@@ -9,6 +9,12 @@
         "fields": {
           "show-progress": {
             "Label": "Show progress bar"
+          },
+          "anterior-offset": {
+            "Label": "Anterior offset"
+          },
+          "posterior-offset": {
+            "Label": "Posterior offset"
           }
         }
       }

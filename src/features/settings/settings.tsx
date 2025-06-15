@@ -11,6 +11,7 @@ import {
   FormItem,
   FormLabel,
 } from "@components/ui/form";
+import { Slider } from "@components/ui/slider";
 import { Switch } from "@components/ui/switch";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "@i18n/use-translation";
@@ -18,7 +19,7 @@ import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 
 const SECTION_TITLE_CLASS = "text-lg font-semibold";
-const SECTION_CONTAINER_CLASS = "flex flex-col gap-2";
+const SECTION_CONTAINER_CLASS = "flex flex-col gap-4";
 const BOOLEAN_ITEM_CLASS = "flex items-center justify-between gap-2";
 
 type Props = {
@@ -30,7 +31,7 @@ export const Settings: FC<Props> = ({ onConfigApply }) => {
   const { setConfiguration } = useConfiguration();
   const configForm = useSettingsForm();
 
-  // Actions
+  // Actions*
 
   const submit = useCallback(
     (data: Configuration) => {
@@ -86,6 +87,31 @@ const Lyrics: FC<SegmentProps> = ({ form }) => {
           </FormItem>
         )}
       />
+      <hr />
+      <FormField
+        control={form.control}
+        name="player.lyricsOffset.anterior"
+        render={({ field }) => (
+          <SliderItem
+            onChange={field.onChange}
+            value={field.value ?? 0}
+            max={3}
+            label={t().form.sections.lyrics.fields["anterior-offset"].Label}
+          />
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="player.lyricsOffset.posterior"
+        render={({ field }) => (
+          <SliderItem
+            onChange={field.onChange}
+            value={field.value ?? 0}
+            max={3}
+            label={t().form.sections.lyrics.fields["posterior-offset"].Label}
+          />
+        )}
+      />
     </div>
   );
 };
@@ -98,4 +124,27 @@ const useSettingsForm = () => {
     defaultValues: configuration,
     resolver: zodResolver(CONFIGURATION_SCHEMA),
   });
+};
+
+const SliderItem: FC<{
+  value: number;
+  onChange: (v: number) => void;
+  max?: number;
+  label: string;
+}> = ({ value, onChange, max, label }) => {
+  return (
+    <FormItem>
+      <FormLabel>{label}</FormLabel>
+      <FormControl>
+        <div className="flex gap-4">
+          <Slider
+            value={[value]}
+            onValueChange={([v]) => onChange(v)}
+            max={max}
+          />
+          <p>{value}</p>
+        </div>
+      </FormControl>
+    </FormItem>
+  );
 };
