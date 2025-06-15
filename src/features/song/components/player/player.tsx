@@ -1,3 +1,4 @@
+import { useConfiguration } from "@/providers/configuration/use-configuration";
 import { Song } from "@/shared/schemas/song/song.schema";
 import { SongItem } from "@features/song/components/list/song-item";
 import { WakeLockError } from "@features/song/components/player/alerts/wake-lock-error";
@@ -12,6 +13,7 @@ type Props = {
 
 export const Player: FC<Props> = ({ song }) => {
   const songManager = useSong(song);
+  const { configuration } = useConfiguration();
 
   return (
     <div className="flex flex-col justify-between items-center w-full min-w-12 h-full py-5">
@@ -20,7 +22,9 @@ export const Player: FC<Props> = ({ song }) => {
         <SongItem song={song} className="max-w-md" />
       </div>
       <div className="flex flex-col gap-2 w-full max-w-md">
-        <LyricProgress songManager={songManager} />
+        {configuration.player.lyricsProgress.showIndicator && (
+          <LyricProgress songManager={songManager} />
+        )}
         <Lyrics songManager={songManager} />
       </div>
       <PlayerActions songManager={songManager} />
