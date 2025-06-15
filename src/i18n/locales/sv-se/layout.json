@@ -1,14 +1,14 @@
 {
   "welcome": {
-    "Message": "Welcome to AlvBeats!"
+    "Message": "Välkommen till AlvBeats!"
   },
   "navigation": {
     "actions": {
       "song-editor": {
-        "Title": "Song editor"
+        "Title": "Låtredigerare"
       },
       "settings": {
-        "Title": "Settings"
+        "Title": "Inställningar"
       }
     }
   }

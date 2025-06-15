@@ -1,0 +1,20 @@
+{
+  "forms": {
+    "search": {
+      "fields": {
+        "query": {
+          "Placeholder": "Sök efter en låt..."
+        }
+      }
+    }
+  },
+  "lists": {
+    "song-results": {
+      "No-results": "Inga låtar hittades som matchar sökkriterierna.",
+      "Empty": "Inga låtar tillgängliga på enheten.",
+      "item": {
+        "Cover-alt": "Omslag av {title}"
+      }
+    }
+  }
+}

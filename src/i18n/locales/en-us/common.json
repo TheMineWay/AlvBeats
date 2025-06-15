@@ -14,5 +14,19 @@
       "drag-and-drop": "or drag and drop",
       "accepted-formats": "Accepted formats: {formats}"
     }
+  },
+  "languages": {
+    "en": {
+      "Name": "English"
+    },
+    "es": {
+      "Name": "Spanish"
+    },
+    "ca": {
+      "Name": "Catalan"
+    },
+    "sv": {
+      "Name": "Swedish"
+    }
   }
 }

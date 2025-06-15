@@ -1,26 +1,26 @@
 {
   "dialog": {
-    "Title": "Configuración"
+    "Title": "Configuració"
   },
   "form": {
     "sections": {
       "lyrics": {
-        "Title": "Letras",
+        "Title": "Lletra",
         "fields": {
           "show-progress": {
-            "Label": "Mostrar barra de progreso"
+            "Label": "Mostra barra de progrés"
           },
           "anterior-offset": {
-            "Label": "Desfase anterior"
+            "Label": "Desfasament anterior"
           },
           "posterior-offset": {
-            "Label": "Desfase posterior"
+            "Label": "Desfasament posterior"
           },
           "start-timestamp": {
-            "Label": "Marca de inicio"
+            "Label": "Marca d'inici"
           },
           "end-timestamp": {
-            "Label": "Marca de fin"
+            "Label": "Marca de final"
           }
         }
       },
@@ -28,7 +28,7 @@
         "Title": "Pantalla",
         "fields": {
           "wake-lock": {
-            "Label": "Bloqueo de pantalla"
+            "Label": "Bloqueig de pantalla"
           }
         }
       },
@@ -38,13 +38,13 @@
           "theme": {
             "Label": "Tema",
             "options": {
-              "default": { "Label": "Predeterminado" },
-              "red": { "Label": "Rojo" },
+              "default": { "Label": "Predeterminat" },
+              "red": { "Label": "Vermell" },
               "rose": { "Label": "Rosa" },
-              "orange": { "Label": "Naranja" },
-              "green": { "Label": "Verde" },
-              "blue": { "Label": "Azul" },
-              "yellow": { "Label": "Amarillo" },
+              "orange": { "Label": "Taronja" },
+              "green": { "Label": "Verd" },
+              "blue": { "Label": "Blau" },
+              "yellow": { "Label": "Groc" },
               "violet": { "Label": "Violeta" }
             }
           }
@@ -52,7 +52,7 @@
       }
     },
     "actions": {
-      "Apply": "Aplicar"
+      "Apply": "Aplica"
     }
   }
 }

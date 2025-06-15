@@ -1,0 +1,15 @@
+{
+  "importer": {
+    "Title": "Importa cançons",
+    "Description": "Importa cançons perquè estiguin disponibles a la teva biblioteca fora de línia.",
+    "Error": "Hi ha hagut un error en processar els fitxers pujats.",
+    "modes": {
+      "upload": { "Title": "Puja" },
+      "url": { "Title": "URL" }
+    },
+    "preview": {
+      "Title": "Cançons que s'importaran",
+      "Import": "Importa cançons"
+    }
+  }
+}

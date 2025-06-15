@@ -1,1 +1,15 @@
-{}
+{
+  "welcome": {
+    "Message": "¡Bienvenido a AlvBeats!"
+  },
+  "navigation": {
+    "actions": {
+      "song-editor": {
+        "Title": "Editor de canciones"
+      },
+      "settings": {
+        "Title": "Configuración"
+      }
+    }
+  }
+}

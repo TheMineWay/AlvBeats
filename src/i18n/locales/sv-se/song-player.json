@@ -1,0 +1,13 @@
+{
+  "states": {
+    "not-found": {
+      "Title": "Låt hittades inte"
+    }
+  },
+  "alerts": {
+    "wake-lock-error": {
+      "Title": "Fel på skärmlås",
+      "Description": "Din webbläsare stöder inte skärmlås-API:t. Det betyder att skärmen kan stängas av under uppspelning, vilket kan avbryta låten."
+    }
+  }
+}

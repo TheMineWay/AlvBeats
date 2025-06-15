@@ -10,10 +10,10 @@ interface LanguageContext {
   translations: TranslationStore;
 }
 
-export const LANGUAGE_CONTEXT = createContext<LanguageContext>(null!);
+export const LanguageContext = createContext<LanguageContext>(null!);
 
 export const useLanguageContext = () => {
-  const context = useContext(LANGUAGE_CONTEXT);
+  const context = useContext(LanguageContext);
 
   if (!context)
     throw new Error(

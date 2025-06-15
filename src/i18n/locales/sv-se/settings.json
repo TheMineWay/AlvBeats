@@ -1,0 +1,58 @@
+{
+  "dialog": {
+    "Title": "Inställningar"
+  },
+  "form": {
+    "sections": {
+      "lyrics": {
+        "Title": "Text",
+        "fields": {
+          "show-progress": {
+            "Label": "Visa förloppsindikator"
+          },
+          "anterior-offset": {
+            "Label": "Föregående förskjutning"
+          },
+          "posterior-offset": {
+            "Label": "Efterföljande förskjutning"
+          },
+          "start-timestamp": {
+            "Label": "Starttid"
+          },
+          "end-timestamp": {
+            "Label": "Sluttid"
+          }
+        }
+      },
+      "screen": {
+        "Title": "Skärm",
+        "fields": {
+          "wake-lock": {
+            "Label": "Skärmlås"
+          }
+        }
+      },
+      "theme": {
+        "Title": "Tema",
+        "fields": {
+          "theme": {
+            "Label": "Tema",
+            "options": {
+              "default": { "Label": "Standard" },
+              "red": { "Label": "Röd" },
+              "rose": { "Label": "Rosa" },
+              "orange": { "Label": "Orange" },
+              "green": { "Label": "Grön" },
+              "blue": { "Label": "Blå" },
+              "yellow": { "Label": "Gul" },
+              "violet": { "Label": "Violett" }
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "Apply": "Tillämpa"
+    }
+  }
+}

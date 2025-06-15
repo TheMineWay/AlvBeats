@@ -1,30 +1,30 @@
-import { LOCAL_STORAGE_CONNECTOR_KEY } from "@constants/storage/storage-services.constant";
+import { useConfiguration } from "@/providers/configuration/use-configuration";
 import { THEMES } from "@constants/theme/themes.constant";
-import { WebWarehouse } from "@themineway/smart-storage-js";
-import { useConnectorWatch } from "@themineway/smart-storage-react";
 import { z } from "zod";
 
 type Theme = z.infer<typeof THEME_SCHEMA>;
 
-const THEME_SCHEMA = z.object({
+export const THEME_SCHEMA = z.object({
   theme: z.enum(THEMES).nullable().default(null),
   dark: z.boolean().default(false),
 });
 
 export const useTheme = () => {
-  const { value: theme, connector } = useConnectorWatch<Theme>(
-    WebWarehouse.getConnector(LOCAL_STORAGE_CONNECTOR_KEY),
-    "theme",
-    THEME_SCHEMA,
-    {
-      onChange: (theme) => {
-        if (theme) applyTheme(theme);
-      },
-    }
-  );
+  const {
+    configuration: { theme, ...restConfig },
+    setConfiguration,
+  } = useConfiguration();
 
   const setTheme = (newTheme: Partial<Theme>) => {
-    connector.set("theme", { ...theme, ...newTheme }, THEME_SCHEMA);
+    const newConfig = {
+      ...restConfig,
+      theme: {
+        ...theme,
+        ...newTheme,
+      },
+    };
+
+    setConfiguration(newConfig);
   };
 
   return {

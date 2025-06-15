@@ -1,5 +1,24 @@
 {
   "sentences": {
-    "Coming-soon": "Próximamente"
+    "Coming-soon": "Próximamente",
+    "Back-home": "Volver al inicio"
+  },
+  "words": {
+    "Play": "Reproducir",
+    "Pause": "Pausa",
+    "Stop": "Detener"
+  },
+  "components": {
+    "file-upload": {
+      "click-to-upload": "Haz clic para subir",
+      "drag-and-drop": "o arrastra y suelta",
+      "accepted-formats": "Formatos aceptados: {formats}"
+    }
+  },
+  "languages": {
+    "en": { "Name": "Inglés" },
+    "es": { "Name": "Español" },
+    "ca": { "Name": "Catalán" },
+    "sv": { "Name": "Sueco" }
   }
 }

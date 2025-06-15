@@ -1,0 +1,13 @@
+{
+  "states": {
+    "not-found": {
+      "Title": "Cançó no trobada"
+    }
+  },
+  "alerts": {
+    "wake-lock-error": {
+      "Title": "Error de bloqueig de pantalla",
+      "Description": "El teu navegador no suporta l'API de bloqueig de pantalla. Això vol dir que la pantalla es pot apagar durant la reproducció, cosa que pot interrompre la cançó."
+    }
+  }
+}

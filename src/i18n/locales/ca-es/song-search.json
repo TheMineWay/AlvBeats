@@ -3,15 +3,15 @@
     "search": {
       "fields": {
         "query": {
-          "Placeholder": "Buscar una canción..."
+          "Placeholder": "Cerca una cançó..."
         }
       }
     }
   },
   "lists": {
     "song-results": {
-      "No-results": "No se encontraron canciones que coincidan con la búsqueda.",
-      "Empty": "No hay canciones disponibles en el dispositivo.",
+      "No-results": "No s'han trobat cançons que coincideixin amb la cerca.",
+      "Empty": "No hi ha cançons disponibles al dispositiu.",
       "item": {
         "Cover-alt": "Portada de {title}"
       }

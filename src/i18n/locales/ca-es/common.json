@@ -1,0 +1,24 @@
+{
+  "sentences": {
+    "Coming-soon": "Pròximament",
+    "Back-home": "Tornar a l'inici"
+  },
+  "words": {
+    "Play": "Reprodueix",
+    "Pause": "Pausa",
+    "Stop": "Atura"
+  },
+  "components": {
+    "file-upload": {
+      "click-to-upload": "Fes clic per pujar",
+      "drag-and-drop": "o arrossega i deixa anar",
+      "accepted-formats": "Formats acceptats: {formats}"
+    }
+  },
+  "languages": {
+    "en": { "Name": "Anglès" },
+    "es": { "Name": "Espanyol" },
+    "ca": { "Name": "Català" },
+    "sv": { "Name": "Suec" }
+  }
+}

@@ -1,13 +1,13 @@
 import {
   Configuration,
-  CONFIGURATION_CONTEXT,
   CONFIGURATION_SCHEMA,
+  ConfigurationContext,
   DEFAULT_CONFIGURATION,
 } from "@/providers/configuration/configuration.context";
 import { LOCAL_STORAGE_CONNECTOR_KEY } from "@constants/storage/storage-services.constant";
 import { WebWarehouse } from "@themineway/smart-storage-js";
 import { useConnectorWatch } from "@themineway/smart-storage-react";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 
 const KEY = "config";
 
@@ -40,14 +40,17 @@ export const ConfigurationProvider: FC<Props> = ({ children }) => {
     setConfiguration(newConfig);
   };
 
+  const providerValue = useMemo(
+    () => ({
+      configuration,
+      setConfiguration: managedSetConfiguration,
+    }),
+    [configuration, managedSetConfiguration]
+  );
+
   return (
-    <CONFIGURATION_CONTEXT.Provider
-      value={{
-        configuration,
-        setConfiguration: managedSetConfiguration,
-      }}
-    >
+    <ConfigurationContext.Provider value={providerValue}>
       {children}
-    </CONFIGURATION_CONTEXT.Provider>
+    </ConfigurationContext.Provider>
   );
 };
