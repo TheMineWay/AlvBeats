@@ -17,7 +17,7 @@ export const SettingsDialog: FC<Props> = ({ open, setOpen }) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent>
+      <DialogContent className="max-h-screen overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{t().dialog.Title}</DialogTitle>
         </DialogHeader>
