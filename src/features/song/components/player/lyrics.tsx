@@ -81,7 +81,9 @@ const Item: FC<ItemProps> = ({ item, songManager }) => {
       {lyricsTimestamps.showStart && (
         <small className="text-xs">{formatDuration(item.data.startTime)}</small>
       )}
-      <p className="text-center">{item.data.text}</p>
+      <p className="text-center">
+        {item.data.segments.map((s) => s.text).join(" ")}
+      </p>
       {item.data.endTime && lyricsTimestamps.showEnd && (
         <small className="text-xs">{formatDuration(item.data.endTime)}</small>
       )}

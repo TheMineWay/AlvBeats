@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const INTERVAL = 100;
 
 type Options = {
   initialTime?: number;
@@ -13,16 +15,32 @@ export const useTimer = ({
 }: Options = {}) => {
   const [time, setTime] = useState(initialTime);
   const [isRunning, setIsRunning] = useState(autoPlay);
+  const startTimeRef = useRef<number | null>(null);
+  const offsetRef = useRef(initialTime);
 
   useEffect(() => {
     if (!isRunning) return;
 
+    startTimeRef.current = Date.now();
     const interval = setInterval(() => {
-      setTime((prevTime) => prevTime + 1);
-    }, 1000);
+      if (startTimeRef.current !== null) {
+        const elapsed = Date.now() - startTimeRef.current + offsetRef.current;
+        setTime(Math.min(elapsed, maxTime));
+        if (elapsed >= maxTime) {
+          setIsRunning(false);
+        }
+      }
+    }, INTERVAL);
 
-    return () => clearInterval(interval);
-  }, [isRunning]);
+    return () => {
+      clearInterval(interval);
+      if (startTimeRef.current !== null) {
+        offsetRef.current += Date.now() - startTimeRef.current;
+        startTimeRef.current = null;
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isRunning, maxTime]);
 
   const pause = () => {
     setIsRunning(false);
@@ -33,19 +51,20 @@ export const useTimer = ({
   const stop = () => {
     setIsRunning(false);
     setTime(0);
+    offsetRef.current = 0;
+    startTimeRef.current = null;
   };
-
-  // Autostop
-  if (time >= maxTime) {
-    stop();
-  }
 
   return {
     time,
-    setTime,
+    setTime: (t: number) => {
+      setTime(t);
+      offsetRef.current = t;
+      if (isRunning) {
+        startTimeRef.current = Date.now();
+      }
+    },
     isRunning,
-
-    // Actions
     pause,
     play,
     stop,
