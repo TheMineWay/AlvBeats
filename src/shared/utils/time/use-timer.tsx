@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const INTERVAL = 100;
+
 type Options = {
   initialTime?: number;
   autoPlay?: boolean;
@@ -18,8 +20,8 @@ export const useTimer = ({
     if (!isRunning) return;
 
     const interval = setInterval(() => {
-      setTime((prevTime) => prevTime + 1);
-    }, 1000);
+      setTime((prevTime) => prevTime + INTERVAL);
+    }, INTERVAL);
 
     return () => clearInterval(interval);
   }, [isRunning]);
