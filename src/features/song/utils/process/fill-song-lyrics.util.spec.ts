@@ -1,8 +1,8 @@
 import {
-  Lyric,
+  type Lyric,
   LyricSegmentType,
 } from "@/shared/schemas/song/lyrics/lyric.schema";
-import { Song } from "@/shared/schemas/song/song.schema";
+import type { Song } from "@/shared/schemas/song/song.schema";
 import { fillSongLyrics } from "@features/song/utils/process/fill-song-lyrics.util";
 import { describe, expect, it } from "vitest";
 
@@ -26,7 +26,7 @@ const MOONMEN: Song = {
     {
       type: LyricSegmentType.MUSIC,
       startTime: 4600,
-      endTime: null,
+      endTime: 6900,
     },
     {
       type: LyricSegmentType.TEXT,
@@ -41,7 +41,7 @@ const MOONMEN: Song = {
     name: "Moonmen",
     artist: "Flight of the Conchords",
     album: "Flight of the Conchords",
-    duration: 12000,
+    duration: 9200,
     coverUrl: null,
   },
   notes: [],
