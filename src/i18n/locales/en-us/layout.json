@@ -9,6 +9,9 @@
       },
       "settings": {
         "Title": "Settings"
+      },
+      "install": {
+        "Title": "Install"
       }
     }
   }
