@@ -22,5 +22,13 @@ export const fillSongLyrics = (song: Song): Lyric[] => {
     currentTime = lyric.endTime ?? song.metadata.duration;
   }
 
+  if (currentTime < song.metadata.duration) {
+    toAppend.push({
+      type: LyricSegmentType.MUSIC,
+      startTime: currentTime,
+      endTime: song.metadata.duration,
+    });
+  }
+
   return [...lyrics, ...toAppend].sort((a, b) => a.startTime - b.startTime);
 };

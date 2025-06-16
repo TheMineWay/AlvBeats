@@ -47,6 +47,47 @@ const MOONMEN: Song = {
   notes: [],
 };
 
+const SUNMEN: Song = {
+  version: 1,
+  lyrics: [
+    {
+      type: LyricSegmentType.TEXT,
+      startTime: 1500,
+      endTime: 2300,
+      segments: [{ text: "In the beginning, there was nothing" }],
+      by: null,
+    },
+    {
+      type: LyricSegmentType.TEXT,
+      startTime: 2300,
+      endTime: 4600,
+      segments: [{ text: "And then there was the sun" }],
+      by: null,
+    },
+    {
+      type: LyricSegmentType.MUSIC,
+      startTime: 4600,
+      endTime: 6900,
+    },
+    {
+      type: LyricSegmentType.TEXT,
+      startTime: 6900,
+      endTime: 9200,
+      segments: [{ text: "And the sun was made of fire" }],
+      by: null,
+    },
+  ],
+  metadata: {
+    genre: "Sci-Fi",
+    name: "Sunmen",
+    artist: "Flight of the Conchords",
+    album: "Flight of the Conchords",
+    duration: 10000,
+    coverUrl: null,
+  },
+  notes: [],
+};
+
 const SONGS_MOCK = {
   moonmen: {
     raw: MOONMEN,
@@ -59,14 +100,34 @@ const SONGS_MOCK = {
       ...MOONMEN.lyrics,
     ],
   },
+  sunmen: {
+    raw: SUNMEN,
+    filled: [
+      {
+        type: LyricSegmentType.MUSIC,
+        startTime: 0,
+        endTime: 1500,
+      },
+      ...SUNMEN.lyrics,
+      {
+        type: LyricSegmentType.MUSIC,
+        startTime: 9200,
+        endTime: 10000,
+      },
+    ],
+  },
 } satisfies Record<string, { raw: Song; filled: Lyric[] }>;
 
-describe("fillSongLyrics(song) should fill", () => {
-  describe("with music", () => {
-    it("empty spaces", () => {
-      const filled = fillSongLyrics(SONGS_MOCK.moonmen.raw);
+describe("fillSongLyrics(song) should fill with music when", () => {
+  it("empty simple spaces are found", () => {
+    const filled = fillSongLyrics(SONGS_MOCK.moonmen.raw);
 
-      expect(filled).toEqual(SONGS_MOCK.moonmen.filled);
-    });
+    expect(filled).toEqual(SONGS_MOCK.moonmen.filled);
+  });
+
+  it("empty spaces are found at the end", () => {
+    const filled = fillSongLyrics(SONGS_MOCK.sunmen.raw);
+
+    expect(filled).toEqual(SONGS_MOCK.sunmen.filled);
   });
 });
