@@ -2,10 +2,11 @@ import { useConfiguration } from "@/providers/configuration/use-configuration";
 import { Song } from "@/shared/schemas/song/song.schema";
 import { useTimer } from "@/shared/utils/time/use-timer";
 import { useWakeLock } from "@features/song/hooks/screen/use-wake-lock";
+import { prepareSong } from "@features/song/utils/process/prepare-song.util";
 import { useMemo } from "react";
 
 export const useSong = (song: Song) => {
-  const songLyrics = useMemo(() => song.lyrics, [song.lyrics]);
+  const { lyrics: songLyrics } = useMemo(() => prepareSong(song), [song]);
 
   const timer = useTimer({ maxTime: song.metadata.duration });
   const {

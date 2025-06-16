@@ -1,0 +1,72 @@
+import {
+  Lyric,
+  LyricSegmentType,
+} from "@/shared/schemas/song/lyrics/lyric.schema";
+import { Song } from "@/shared/schemas/song/song.schema";
+import { fillSongLyrics } from "@features/song/utils/process/fill-song-lyrics.util";
+import { describe, expect, it } from "vitest";
+
+const MOONMEN: Song = {
+  version: 1,
+  lyrics: [
+    {
+      type: LyricSegmentType.TEXT,
+      startTime: 1000,
+      endTime: 2300,
+      segments: [{ text: "In the beginning, there was nothing" }],
+      by: null,
+    },
+    {
+      type: LyricSegmentType.TEXT,
+      startTime: 2300,
+      endTime: 4600,
+      segments: [{ text: "And then there was the moon" }],
+      by: null,
+    },
+    {
+      type: LyricSegmentType.MUSIC,
+      startTime: 4600,
+      endTime: null,
+    },
+    {
+      type: LyricSegmentType.TEXT,
+      startTime: 6900,
+      endTime: 9200,
+      segments: [{ text: "And the moon was made of cheese" }],
+      by: null,
+    },
+  ],
+  metadata: {
+    genre: "Sci-Fi",
+    name: "Moonmen",
+    artist: "Flight of the Conchords",
+    album: "Flight of the Conchords",
+    duration: 12000,
+    coverUrl: null,
+  },
+  notes: [],
+};
+
+const SONGS_MOCK = {
+  moonmen: {
+    raw: MOONMEN,
+    filled: [
+      {
+        type: LyricSegmentType.MUSIC,
+        startTime: 0,
+        endTime: 1000,
+      },
+      ...MOONMEN.lyrics,
+    ],
+  },
+} satisfies Record<string, { raw: Song; filled: Lyric[] }>;
+
+describe("fillSongLyrics(song) should fill", () => {
+  describe("with music", () => {
+    it("empty spaces", () => {
+      const filled = fillSongLyrics(SONGS_MOCK.moonmen.raw);
+
+      expect(filled).toEqual(SONGS_MOCK.moonmen.filled);
+    });
+  });
+});
