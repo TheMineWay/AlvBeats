@@ -18,7 +18,7 @@ const MOONMEN: Song = {
     },
     {
       type: LyricSegmentType.TEXT,
-      startTime: 2300,
+      startTime: 2500,
       endTime: 4600,
       segments: [{ text: "And then there was the moon" }],
       by: null,
@@ -97,8 +97,13 @@ const SONGS_MOCK = {
         startTime: 0,
         endTime: 1000,
       },
+      {
+        type: LyricSegmentType.MUSIC,
+        startTime: 2300,
+        endTime: 2500,
+      },
       ...MOONMEN.lyrics,
-    ],
+    ].sort((a, b) => a.startTime - b.startTime) as Lyric[],
   },
   sunmen: {
     raw: SUNMEN,
