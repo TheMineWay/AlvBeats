@@ -1,3 +1,4 @@
+import { InstallButton } from "@components/layout/actions/install-button";
 import { DarkModeSwitch } from "@components/layout/navigation/actions/dark-mode-switch";
 import { LanguageSelector } from "@components/layout/navigation/actions/language-selector";
 import { Badge } from "@components/ui/badge";
@@ -61,6 +62,7 @@ const MenuContent: FC = () => {
         <Button variant="outline" onClick={() => setIsSettingsOpen(true)}>
           <Settings /> {t().navigation.actions.settings.Title}
         </Button>
+        <InstallButton />
       </div>
       <SettingsDialog open={isSettingsOpen} setOpen={setIsSettingsOpen} />
     </>

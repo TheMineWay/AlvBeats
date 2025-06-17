@@ -2,9 +2,12 @@ import { useConfiguration } from "@/providers/configuration/use-configuration";
 import { Song } from "@/shared/schemas/song/song.schema";
 import { useTimer } from "@/shared/utils/time/use-timer";
 import { useWakeLock } from "@features/song/hooks/screen/use-wake-lock";
+import { prepareSong } from "@features/song/utils/process/prepare-song.util";
 import { useMemo } from "react";
 
 export const useSong = (song: Song) => {
+  const { lyrics: songLyrics } = useMemo(() => prepareSong(song), [song]);
+
   const timer = useTimer({ maxTime: song.metadata.duration });
   const {
     configuration: { player: playerConfig },
@@ -12,21 +15,21 @@ export const useSong = (song: Song) => {
   const wakeLock = useWakeLock({ disabled: !playerConfig.wakeLock });
 
   const duration = useMemo(() => {
-    const maxDuration = song.lyrics.reduce((max, lyric) => {
+    const maxDuration = songLyrics.reduce((max, lyric) => {
       const endTime = lyric.endTime ?? Infinity;
       return Math.max(max, endTime);
     }, 0);
     return maxDuration > 0 ? maxDuration : 0;
-  }, [song.lyrics]);
+  }, [songLyrics]);
 
   const activeLyric = useMemo(() => {
-    if (!song.lyrics || song.lyrics.length === 0)
+    if (!songLyrics || songLyrics.length === 0)
       return {
         index: -1,
       };
 
     const currentTime = timer.time;
-    const index = song.lyrics.findIndex((lyric) => {
+    const index = songLyrics.findIndex((lyric) => {
       const startTime = lyric.startTime ?? 0;
       const endTime = lyric.endTime ?? Infinity;
       return currentTime >= startTime && currentTime <= endTime;
@@ -34,18 +37,18 @@ export const useSong = (song: Song) => {
 
     return {
       index,
-      data: index !== -1 ? song.lyrics[index] : undefined,
+      data: index !== -1 ? songLyrics[index] : undefined,
     };
   }, [song, timer.time]);
 
   const lyrics = useMemo(() => {
     if (activeLyric.index === -1) return [];
 
-    return song.lyrics.map((lyric, index) => ({
+    return songLyrics.map((lyric, index) => ({
       data: lyric,
       isActive: index === activeLyric.index,
     }));
-  }, [activeLyric, song.lyrics]);
+  }, [activeLyric, songLyrics]);
 
   return {
     timer,
