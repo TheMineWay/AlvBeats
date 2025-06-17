@@ -46,7 +46,8 @@ export const useTimer = ({
     setIsRunning(false);
   };
   const play = () => {
-    setIsRunning(true);
+    if (time >= maxTime) stop();
+    else setIsRunning(true);
   };
   const stop = () => {
     setIsRunning(false);
