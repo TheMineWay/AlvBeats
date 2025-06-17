@@ -9,7 +9,13 @@
       },
       "settings": {
         "Title": "Settings"
+      },
+      "install": {
+        "Title": "Install"
       }
     }
+  },
+  "footer": {
+    "Share": "Share"
   }
 }
