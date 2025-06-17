@@ -1,5 +1,9 @@
 import { cn } from "@/lib/utils";
 import { useConfiguration } from "@/providers/configuration/use-configuration";
+import {
+  Lyric,
+  LyricSegmentType,
+} from "@/shared/schemas/song/lyrics/lyric.schema";
 import { formatDuration } from "@/shared/utils/time/format-duration";
 import { UseSong } from "@features/song/hooks/player/use-song";
 import { useCallback, useMemo } from "react";
@@ -81,12 +85,28 @@ const Item: FC<ItemProps> = ({ item, songManager }) => {
       {lyricsTimestamps.showStart && (
         <small className="text-xs">{formatDuration(item.data.startTime)}</small>
       )}
-      <p className="text-center">
-        {item.data.segments.map((s) => s.text).join(" ")}
-      </p>
+      <RenderLyrics lyric={item.data} />
       {item.data.endTime && lyricsTimestamps.showEnd && (
         <small className="text-xs">{formatDuration(item.data.endTime)}</small>
       )}
     </div>
+  );
+};
+
+/* Internal */
+
+type RenderLyricsProps = {
+  lyric: Lyric;
+};
+
+const RenderLyrics: FC<RenderLyricsProps> = ({ lyric }) => {
+  return (
+    <p className="text-center">
+      {lyric.type === LyricSegmentType.TEXT ? (
+        lyric.segments.map((s) => s.text).join(" ")
+      ) : (
+        <i>🎵🎵🎵</i>
+      )}
+    </p>
   );
 };
