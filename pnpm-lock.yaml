@@ -54,8 +54,8 @@ importers:
         specifier: ^1.120.20
         version: 1.120.20(@tanstack/react-router@1.121.12(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@tanstack/router-core@1.121.12)(csstype@3.1.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tiny-invariant@1.3.3)
       '@themineway/smart-storage-js':
-        specifier: 1.0.0-alpha.17
-        version: 1.0.0-alpha.17
+        specifier: 1.0.0-alpha.18
+        version: 1.0.0-alpha.18
       '@themineway/smart-storage-react':
         specifier: 1.0.0-alpha.13
         version: 1.0.0-alpha.13
@@ -1854,8 +1854,8 @@ packages:
   '@themineway/smart-storage-js@1.0.0-alpha.15':
     resolution: {integrity: sha512-odjxrWV9qU3M51uwIOwq4bPt0vOAPfwMupKXKlwfzaEuadKS6Al6w0Ocj9b5HQHeHvBOe5wH29GamW0XoQ0B2w==}
 
-  '@themineway/smart-storage-js@1.0.0-alpha.17':
-    resolution: {integrity: sha512-ukt0Y0o9xLHhfH9hNniyYR7+wd3gh6RSeN4w5db7av+iT56ajsMueG3f6vkgMmP6zBvLmbBhv5fUt37W1POzWg==}
+  '@themineway/smart-storage-js@1.0.0-alpha.18':
+    resolution: {integrity: sha512-+zjB0TlXI4OFgrYM7OBusC2WCtCTsAgv0wmUL2uT9Jp7MGmIXrY1fDCRNuMjwL0UxDr5B+UCGfOlbqJDZKp/sw==}
 
   '@themineway/smart-storage-react@1.0.0-alpha.13':
     resolution: {integrity: sha512-5KTprMrLAWiWBPqGD9dRukiX7GLa2lyFhy7VNjzD5KFBQ1tokZNbF6m7K1BmWWZoFTXxX91LteSJte28B0SBgw==}
@@ -5519,7 +5519,7 @@ snapshots:
       yup: 1.6.1
       zod: 3.25.56
 
-  '@themineway/smart-storage-js@1.0.0-alpha.17':
+  '@themineway/smart-storage-js@1.0.0-alpha.18':
     dependencies:
       yup: 1.6.1
       zod: 3.25.56

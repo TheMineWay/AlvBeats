@@ -54,7 +54,7 @@
     "@tailwindcss/vite": "^4.1.10",
     "@tanstack/react-router": "^1.121.12",
     "@tanstack/react-router-devtools": "^1.120.20",
-    "@themineway/smart-storage-js": "1.0.0-alpha.17",
+    "@themineway/smart-storage-js": "1.0.0-alpha.18",
     "@themineway/smart-storage-react": "1.0.0-alpha.13",
     "@types/lodash": "^4.17.17",
     "class-variance-authority": "^0.7.1",
