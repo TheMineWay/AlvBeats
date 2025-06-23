@@ -1,6 +1,6 @@
 import { Song, SONG_SCHEMA } from "@/shared/schemas/song/song.schema";
 import { LOCAL_STORAGE_CONNECTOR_KEY } from "@constants/storage/storage-services.constant";
-import { LyricsScriptPlayer } from "@features/lyrics-script/components/lyrics-script-player";
+import { LyricsScriptPlayer } from "@features/players/lyrics-script/components/lyrics-script-player";
 import { getStoredSongId } from "@features/song/utils/stored/get-stored-song-id";
 import { createFileRoute, useParams } from "@tanstack/react-router";
 import {

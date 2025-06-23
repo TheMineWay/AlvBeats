@@ -1,7 +1,7 @@
 import { Song, SONG_SCHEMA } from "@/shared/schemas/song/song.schema";
 import { Button } from "@components/ui/button";
 import { LOCAL_STORAGE_CONNECTOR_KEY } from "@constants/storage/storage-services.constant";
-import { Player } from "@features/song/components/player/player";
+import { Player } from "@features/players/player/player";
 import { getStoredSongId } from "@features/song/utils/stored/get-stored-song-id";
 import { useTranslation } from "@i18n/use-translation";
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";

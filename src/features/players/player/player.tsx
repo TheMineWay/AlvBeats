@@ -2,11 +2,11 @@ import { cn } from "@/lib/utils";
 import { useConfiguration } from "@/providers/configuration/use-configuration";
 import { Song } from "@/shared/schemas/song/song.schema";
 import { useScreen } from "@/utils/screen/use-screen";
+import { WakeLockError } from "@features/players/player/alerts/wake-lock-error";
+import { LyricProgress } from "@features/players/player/lyric-progress";
+import { Lyrics } from "@features/players/player/lyrics";
+import { PlayerActions } from "@features/players/player/player-actions";
 import { SongItem } from "@features/song/components/list/song-item";
-import { WakeLockError } from "@features/song/components/player/alerts/wake-lock-error";
-import { LyricProgress } from "@features/song/components/player/lyric-progress";
-import { Lyrics } from "@features/song/components/player/lyrics";
-import { PlayerActions } from "@features/song/components/player/player-actions";
 import { useSong } from "@features/song/hooks/player/use-song";
 
 type Props = {
