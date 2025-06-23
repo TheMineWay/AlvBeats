@@ -40,7 +40,7 @@ export const SongItem: FC<SongItemProps> = ({
           <h3 className="text-lg font-semibold">{song.metadata.name}</h3>
           <p className="text-sm text-gray-600">{song.metadata.artist}</p>
         </div>
-        {extra && <div className="mr-2">{extra}</div>}
+        {extra && <div className="mr-4">{extra}</div>}
       </div>
     </div>
   );
