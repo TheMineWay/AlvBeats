@@ -10,7 +10,7 @@ import {
   WebWarehouse,
 } from "@themineway/smart-storage-js";
 
-export const Route = createFileRoute("/player/$song-id")({
+export const Route = createFileRoute("/players/player/$song-id")({
   component: RouteComponent,
 });
 
@@ -19,7 +19,7 @@ function RouteComponent() {
   const { t: commonT } = useTranslation("common");
 
   const { "song-id": songId } = useParams({
-    from: "/player/$song-id",
+    from: "/players/player/$song-id",
   });
 
   const lsConnector: LocalStorageConnector = WebWarehouse.getConnector(

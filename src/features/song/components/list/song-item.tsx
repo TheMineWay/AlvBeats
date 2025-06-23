@@ -7,12 +7,14 @@ type SongItemProps = {
   song: Pick<Song, "metadata">;
   hoverable?: boolean;
   className?: string;
+  extra?: React.ReactNode;
 };
 
 export const SongItem: FC<SongItemProps> = ({
   song,
   hoverable = false,
   className,
+  extra,
 }) => {
   const { interpolated } = useTranslation("song-search");
 
@@ -33,9 +35,12 @@ export const SongItem: FC<SongItemProps> = ({
         })}
         src={song.metadata.coverUrl ?? defaultSongCover}
       />
-      <div className="h-full flex flex-col justify-center pl-2">
-        <h3 className="text-lg font-semibold">{song.metadata.name}</h3>
-        <p className="text-sm text-gray-600">{song.metadata.artist}</p>
+      <div className="h-full w-full flex justify-between items-center pl-2">
+        <div>
+          <h3 className="text-lg font-semibold">{song.metadata.name}</h3>
+          <p className="text-sm text-gray-600">{song.metadata.artist}</p>
+        </div>
+        {extra && <div className="mr-2">{extra}</div>}
       </div>
     </div>
   );

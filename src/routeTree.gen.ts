@@ -12,7 +12,8 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
-import { Route as PlayerSongIdImport } from './routes/player/$song-id'
+import { Route as PlayersScriptSongIdImport } from './routes/players/script/$song-id'
+import { Route as PlayersPlayerSongIdImport } from './routes/players/player/$song-id'
 
 // Create/Update Routes
 
@@ -22,9 +23,15 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const PlayerSongIdRoute = PlayerSongIdImport.update({
-  id: '/player/$song-id',
-  path: '/player/$song-id',
+const PlayersScriptSongIdRoute = PlayersScriptSongIdImport.update({
+  id: '/players/script/$song-id',
+  path: '/players/script/$song-id',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PlayersPlayerSongIdRoute = PlayersPlayerSongIdImport.update({
+  id: '/players/player/$song-id',
+  path: '/players/player/$song-id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +46,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/player/$song-id': {
-      id: '/player/$song-id'
-      path: '/player/$song-id'
-      fullPath: '/player/$song-id'
-      preLoaderRoute: typeof PlayerSongIdImport
+    '/players/player/$song-id': {
+      id: '/players/player/$song-id'
+      path: '/players/player/$song-id'
+      fullPath: '/players/player/$song-id'
+      preLoaderRoute: typeof PlayersPlayerSongIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/players/script/$song-id': {
+      id: '/players/script/$song-id'
+      path: '/players/script/$song-id'
+      fullPath: '/players/script/$song-id'
+      preLoaderRoute: typeof PlayersScriptSongIdImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +67,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/player/$song-id': typeof PlayerSongIdRoute
+  '/players/player/$song-id': typeof PlayersPlayerSongIdRoute
+  '/players/script/$song-id': typeof PlayersScriptSongIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/player/$song-id': typeof PlayerSongIdRoute
+  '/players/player/$song-id': typeof PlayersPlayerSongIdRoute
+  '/players/script/$song-id': typeof PlayersScriptSongIdRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/player/$song-id': typeof PlayerSongIdRoute
+  '/players/player/$song-id': typeof PlayersPlayerSongIdRoute
+  '/players/script/$song-id': typeof PlayersScriptSongIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/player/$song-id'
+  fullPaths: '/' | '/players/player/$song-id' | '/players/script/$song-id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/player/$song-id'
-  id: '__root__' | '/' | '/player/$song-id'
+  to: '/' | '/players/player/$song-id' | '/players/script/$song-id'
+  id: '__root__' | '/' | '/players/player/$song-id' | '/players/script/$song-id'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  PlayerSongIdRoute: typeof PlayerSongIdRoute
+  PlayersPlayerSongIdRoute: typeof PlayersPlayerSongIdRoute
+  PlayersScriptSongIdRoute: typeof PlayersScriptSongIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  PlayerSongIdRoute: PlayerSongIdRoute,
+  PlayersPlayerSongIdRoute: PlayersPlayerSongIdRoute,
+  PlayersScriptSongIdRoute: PlayersScriptSongIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +116,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/player/$song-id"
+        "/players/player/$song-id",
+        "/players/script/$song-id"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/player/$song-id": {
-      "filePath": "player/$song-id.tsx"
+    "/players/player/$song-id": {
+      "filePath": "players/player/$song-id.tsx"
+    },
+    "/players/script/$song-id": {
+      "filePath": "players/script/$song-id.tsx"
     }
   }
 }
