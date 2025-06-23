@@ -1,15 +1,15 @@
 import { cn } from "@/lib/utils";
 import { useConfiguration } from "@/providers/configuration/use-configuration";
 import {
-  Lyric,
-  LyricSegmentType,
-} from "@/shared/schemas/song/lyrics/lyric.schema";
+  LyricsLineSegmentType,
+  type LyricsLine as LyricsLineType,
+} from "@/shared/schemas/song/lyrics/lyrics-line.schema";
 import { CSSProperties } from "react";
 
 const CN = "";
 
 type Props = {
-  line: Lyric;
+  line: LyricsLineType;
 };
 
 export const LyricsLine: FC<Props> = ({ line }) => {
@@ -26,7 +26,7 @@ export const LyricsLine: FC<Props> = ({ line }) => {
     fontFamily,
   };
 
-  if (line.type === LyricSegmentType.MUSIC)
+  if (line.type === LyricsLineSegmentType.MUSIC)
     return (
       <p className={className} style={style}>
         🎶

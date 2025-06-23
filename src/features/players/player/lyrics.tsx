@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 import { useConfiguration } from "@/providers/configuration/use-configuration";
 import {
-  Lyric,
-  LyricSegmentType,
-} from "@/shared/schemas/song/lyrics/lyric.schema";
+  LyricsLine,
+  LyricsLineSegmentType,
+} from "@/shared/schemas/song/lyrics/lyrics-line.schema";
 import { formatDuration } from "@/shared/utils/time/format-duration";
 import { UseSong } from "@features/song/hooks/player/use-song";
 import { useCallback, useMemo } from "react";
@@ -13,7 +13,7 @@ type Props = {
 };
 
 export const Lyrics: FC<Props> = ({ songManager }) => {
-  const { lyrics: _lyrics, activeLyric } = songManager;
+  const { lyrics: _lyrics, activeLine } = songManager;
 
   const {
     configuration: {
@@ -23,12 +23,12 @@ export const Lyrics: FC<Props> = ({ songManager }) => {
 
   const lyrics = useMemo(() => {
     return _lyrics.slice(
-      Math.max(0, activeLyric.index - lyricsOffset.anterior),
-      Math.min(_lyrics.length, activeLyric.index + lyricsOffset.posterior + 1)
+      Math.max(0, activeLine.index - lyricsOffset.anterior),
+      Math.min(_lyrics.length, activeLine.index + lyricsOffset.posterior + 1)
     );
   }, [
     _lyrics,
-    activeLyric.index,
+    activeLine.index,
     lyricsOffset.anterior,
     lyricsOffset.posterior,
   ]);
@@ -85,7 +85,7 @@ const Item: FC<ItemProps> = ({ item, songManager }) => {
       {lyricsTimestamps.showStart && (
         <small className="text-xs">{formatDuration(item.data.startTime)}</small>
       )}
-      <RenderLyrics lyric={item.data} />
+      <RenderLyrics line={item.data} />
       {item.data.endTime && lyricsTimestamps.showEnd && (
         <small className="text-xs">{formatDuration(item.data.endTime)}</small>
       )}
@@ -96,14 +96,14 @@ const Item: FC<ItemProps> = ({ item, songManager }) => {
 /* Internal */
 
 type RenderLyricsProps = {
-  lyric: Lyric;
+  line: LyricsLine;
 };
 
-const RenderLyrics: FC<RenderLyricsProps> = ({ lyric }) => {
+const RenderLyrics: FC<RenderLyricsProps> = ({ line }) => {
   return (
     <p className="text-center">
-      {lyric.type === LyricSegmentType.TEXT ? (
-        lyric.segments.map((s) => s.text).join(" ")
+      {line.type === LyricsLineSegmentType.TEXT ? (
+        line.segments.map((s) => s.text).join(" ")
       ) : (
         <i>🎵🎵🎵</i>
       )}

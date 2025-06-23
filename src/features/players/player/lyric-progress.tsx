@@ -6,19 +6,19 @@ type Props = {
   songManager: UseSong;
 };
 
-export const LyricProgress: FC<Props> = ({ songManager }) => {
-  const lyric = songManager.activeLyric.data;
+export const LyricsLineProgress: FC<Props> = ({ songManager }) => {
+  const line = songManager.activeLine.data;
 
   const progress = useMemo(() => {
-    if (!lyric) return 0;
+    if (!line) return 0;
 
-    const { startTime, endTime } = lyric;
+    const { startTime, endTime } = line;
     const max = (endTime ?? songManager.song.metadata.duration) - startTime;
 
     const progress = songManager.timer.time - startTime;
 
     return (progress * 100) / max;
-  }, [lyric, songManager.song.metadata.duration, songManager.timer.time]);
+  }, [line, songManager.song.metadata.duration, songManager.timer.time]);
 
   return <Progress value={progress} className="w-full h-2 rounded" />;
 };

@@ -3,7 +3,7 @@ import { useConfiguration } from "@/providers/configuration/use-configuration";
 import { Song } from "@/shared/schemas/song/song.schema";
 import { useScreen } from "@/utils/screen/use-screen";
 import { WakeLockError } from "@features/players/player/alerts/wake-lock-error";
-import { LyricProgress } from "@features/players/player/lyric-progress";
+import { LyricsLineProgress } from "@features/players/player/lyric-progress";
 import { Lyrics } from "@features/players/player/lyrics";
 import { PlayerActions } from "@features/players/player/player-actions";
 import { SongItem } from "@features/song/components/list/song-item";
@@ -31,7 +31,7 @@ export const Player: FC<Props> = ({ song }) => {
       </div>
       <div className="flex flex-col gap-2 w-full max-w-xl">
         {configuration.player.lyricsProgress.showIndicator && (
-          <LyricProgress songManager={songManager} />
+          <LyricsLineProgress songManager={songManager} />
         )}
         <Lyrics songManager={songManager} />
       </div>

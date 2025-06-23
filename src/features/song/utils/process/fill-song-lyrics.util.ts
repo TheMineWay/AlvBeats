@@ -1,30 +1,30 @@
 import {
-  LyricSegmentType,
-  type Lyric,
-} from "@/shared/schemas/song/lyrics/lyric.schema";
+  LyricsLineSegmentType,
+  type LyricsLine,
+} from "@/shared/schemas/song/lyrics/lyrics-line.schema";
 import type { Song } from "@/shared/schemas/song/song.schema";
 
-export const fillSongLyrics = (song: Song): Lyric[] => {
+export const fillSongLyrics = (song: Song): LyricsLine[] => {
   const lyrics = [...song.lyrics].sort((a, b) => a.startTime - b.startTime);
-  const toAppend: Lyric[] = [];
+  const toAppend: LyricsLine[] = [];
 
   let currentTime = 0;
 
-  for (const lyric of lyrics) {
-    if (lyric.startTime > currentTime) {
+  for (const line of lyrics) {
+    if (line.startTime > currentTime) {
       toAppend.push({
-        type: LyricSegmentType.MUSIC,
+        type: LyricsLineSegmentType.MUSIC,
         startTime: currentTime,
-        endTime: lyric.startTime,
+        endTime: line.startTime,
       });
     }
 
-    currentTime = lyric.endTime ?? song.metadata.duration;
+    currentTime = line.endTime ?? song.metadata.duration;
   }
 
   if (currentTime < song.metadata.duration) {
     toAppend.push({
-      type: LyricSegmentType.MUSIC,
+      type: LyricsLineSegmentType.MUSIC,
       startTime: currentTime,
       endTime: song.metadata.duration,
     });

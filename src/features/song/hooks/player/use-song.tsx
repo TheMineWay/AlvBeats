@@ -22,7 +22,7 @@ export const useSong = (song: Song) => {
     return maxDuration > 0 ? maxDuration : 0;
   }, [songLyrics]);
 
-  const activeLyric = useMemo(() => {
+  const activeLine = useMemo(() => {
     if (!songLyrics || songLyrics.length === 0)
       return {
         index: -1,
@@ -42,18 +42,18 @@ export const useSong = (song: Song) => {
   }, [song, timer.time]);
 
   const lyrics = useMemo(() => {
-    if (activeLyric.index === -1) return [];
+    if (activeLine.index === -1) return [];
 
     return songLyrics.map((lyric, index) => ({
       data: lyric,
-      isActive: index === activeLyric.index,
+      isActive: index === activeLine.index,
     }));
-  }, [activeLyric, songLyrics]);
+  }, [activeLine, songLyrics]);
 
   return {
     timer,
     lyrics,
-    activeLyric,
+    activeLine,
     duration,
     song,
     wakeLock,
