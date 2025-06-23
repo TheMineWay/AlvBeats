@@ -11,7 +11,7 @@ export const LyricsScriptPlayer: FC<Props> = ({ song }) => {
   const manager = useScriptPlayer(song);
 
   return (
-    <div className="flex flex-col h-full w-full gap-4 p-2">
+    <div className="flex flex-col h-full w-full gap-4 px-2 pt-2">
       <ScriptPlayerActions manager={manager} />
       <LyricsScriptView manager={manager} />
     </div>
