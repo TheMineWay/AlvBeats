@@ -2,6 +2,18 @@ import { THEME_SCHEMA } from "@components/layout/navigation/actions/use-theme";
 import { createContext } from "react";
 import { z } from "zod";
 
+export enum TextAlign {
+  LEFT = "left",
+  CENTER = "center",
+  RIGHT = "right",
+}
+
+export enum TextFont {
+  ARIAL = "Arial",
+  VERDANA = "Verdana",
+  TIMES_NEW_ROMAN = "Times New Roman",
+}
+
 export const CONFIGURATION_SCHEMA = z.object({
   player: z.object({
     wakeLock: z.boolean().default(true), // Enable wake lock to prevent screen from turning off during playback
@@ -17,6 +29,15 @@ export const CONFIGURATION_SCHEMA = z.object({
     lyricsProgress: z.object({
       showIndicator: z.boolean().default(true), // Show progress indicator for active lyrics
     }),
+  }),
+  lyrics: z.object({
+    fontSize: z.number().min(10).max(32).default(8),
+    fontFamily: z
+      .enum([TextFont.ARIAL, TextFont.TIMES_NEW_ROMAN, TextFont.VERDANA])
+      .default(TextFont.ARIAL),
+    align: z
+      .enum([TextAlign.LEFT, TextAlign.CENTER, TextAlign.RIGHT])
+      .default(TextAlign.CENTER),
   }),
   theme: THEME_SCHEMA,
 });
@@ -37,6 +58,11 @@ export const DEFAULT_CONFIGURATION: Configuration = {
     lyricsProgress: {
       showIndicator: true,
     },
+  },
+  lyrics: {
+    fontSize: 15,
+    fontFamily: TextFont.ARIAL,
+    align: TextAlign.CENTER,
   },
   theme: {
     theme: null,

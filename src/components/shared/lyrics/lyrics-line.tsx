@@ -1,7 +1,10 @@
+import { cn } from "@/lib/utils";
+import { useConfiguration } from "@/providers/configuration/use-configuration";
 import {
   Lyric,
   LyricSegmentType,
 } from "@/shared/schemas/song/lyrics/lyric.schema";
+import { CSSProperties } from "react";
 
 const CN = "";
 
@@ -10,9 +13,28 @@ type Props = {
 };
 
 export const LyricsLine: FC<Props> = ({ line }) => {
-  if (line.type === LyricSegmentType.MUSIC) return <p className={CN}>🎶</p>;
+  const {
+    configuration: {
+      lyrics: { fontSize, align, fontFamily },
+    },
+  } = useConfiguration();
+
+  const className = cn(CN);
+  const style: CSSProperties = {
+    fontSize: `${fontSize}px`,
+    textAlign: align,
+    fontFamily,
+  };
+
+  if (line.type === LyricSegmentType.MUSIC)
+    return (
+      <p className={className} style={style}>
+        🎶
+      </p>
+    );
+
   return (
-    <p className={CN}>
+    <p className={className} style={style}>
       {line.segments.map((segment) => segment.text).join(" ")}
     </p>
   );
