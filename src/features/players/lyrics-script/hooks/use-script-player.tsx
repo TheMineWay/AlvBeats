@@ -9,7 +9,7 @@ export const useScriptPlayer = (song: Song) => {
   } = useConfiguration();
   useWakeLock({ disabled: !playerConfig.wakeLock });
 
-  const [speed, setSpeed] = useState(50); // 1-100
+  const [speedMultiplier, setSpeedMultiplier] = useState(10);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -17,7 +17,15 @@ export const useScriptPlayer = (song: Song) => {
   const play = () => setIsPlaying(true);
   const pause = () => setIsPlaying(false);
 
-  return { song, scrollRef, isPlaying, play, pause, speed, setSpeed };
+  return {
+    song,
+    scrollRef,
+    isPlaying,
+    play,
+    pause,
+    speedMultiplier,
+    setSpeedMultiplier,
+  };
 };
 
 export type UseScriptPlayer = ReturnType<typeof useScriptPlayer>;
