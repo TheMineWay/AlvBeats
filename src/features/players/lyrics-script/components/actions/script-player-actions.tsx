@@ -40,13 +40,13 @@ const SpeedInput: FC<SpeedInputProps> = ({ manager }) => {
     <div className="flex gap-2 items-center">
       <label htmlFor={id}>{t().actions.speed.Label}</label>
       <Input
-        value={manager.speedMultiplier}
+        value={manager.speed}
         onChange={(v) => {
           const val = v.target.valueAsNumber;
           if (!isNaN(val) && val > 0) {
-            manager.setSpeedMultiplier(val);
+            manager.setSpeed(val);
           } else {
-            manager.setSpeedMultiplier(0);
+            manager.setSpeed(0);
           }
         }}
         type="number"
