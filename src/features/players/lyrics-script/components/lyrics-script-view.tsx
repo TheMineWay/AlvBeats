@@ -6,10 +6,10 @@ export type Props = {
 };
 
 export const LyricsScriptView: FC<Props> = ({ manager }) => {
-  const { song } = manager;
+  const { song, scrollRef } = manager;
 
   return (
-    <div className="h-full overflow-y-scroll">
+    <div className="h-full overflow-y-scroll" ref={scrollRef}>
       {song.lyrics.map((lyric, idx) => (
         <LyricsLine key={idx} line={lyric} />
       ))}
