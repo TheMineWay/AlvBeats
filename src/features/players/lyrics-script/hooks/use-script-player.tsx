@@ -10,60 +10,44 @@ export const useScriptPlayer = (song: Song) => {
 
   useWakeLock({ disabled: !playerConfig.wakeLock });
 
-  const [speed, setSpeed] = useState(50); // px per second
+  const [speed, setSpeed] = useState(10); // px per second
   const [isPlaying, setIsPlaying] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  const animationRef = useRef<number>(null);
-  const lastFrameTime = useRef<number | null>(null);
+  const animation = useRef<number | null>(null);
 
   const play = () => setIsPlaying(true);
   const pause = () => setIsPlaying(false);
 
-  const scrollStep = (timestamp: number) => {
-    if (!scrollRef.current) return;
-
-    lastFrameTime.current ??= timestamp;
-
-    const delta = timestamp - lastFrameTime.current;
-    const deltaPx = (speed * delta) / 1000; // convert ms to seconds
-
-    scrollRef.current.scrollTop += deltaPx;
-    lastFrameTime.current = timestamp;
-
-    const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
-    const reachedBottom = scrollTop + clientHeight >= scrollHeight;
-
-    if (!reachedBottom && isPlaying) {
-      animationRef.current = requestAnimationFrame(scrollStep);
-    } else {
-      setIsPlaying(false);
-    }
-  };
+  const scrollElement = scrollRef.current;
 
   useEffect(() => {
-    if (isPlaying) {
-      lastFrameTime.current = null;
-      animationRef.current = requestAnimationFrame(scrollStep);
-    } else if (animationRef.current) {
-      cancelAnimationFrame(animationRef.current);
+    if (!isPlaying || !scrollElement) {
+      if (!isPlaying && animation.current)
+        cancelAnimationFrame(animation.current);
+      return;
     }
 
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
+    const scrollHeight = scrollElement.scrollHeight;
+    const clientHeight = scrollElement.clientHeight;
+
+    const animFn = () => {
+      const scrollTop = scrollElement.scrollTop;
+      const targetScrollTop = scrollHeight - clientHeight;
+
+      if (scrollTop < targetScrollTop) {
+        scrollElement.scrollTo({
+          top: scrollTop + speed,
+          behavior: "smooth",
+        });
+        animation.current = requestAnimationFrame(animFn);
+      } else {
+        if (animation.current) cancelAnimationFrame(animation.current);
+        setIsPlaying(false); // Stop playing when the end is reached
       }
     };
-  }, [isPlaying, speed]);
 
-  const hasReachedEnd =
-    scrollRef.current &&
-    scrollRef.current.scrollTop + scrollRef.current.clientHeight >=
-      scrollRef.current.scrollHeight;
-
-  const hasScroll =
-    scrollRef.current &&
-    scrollRef.current.scrollHeight > scrollRef.current.clientHeight;
+    animation.current = requestAnimationFrame(animFn);
+  }, [speed, scrollElement, isPlaying]);
 
   return {
     song,
@@ -73,8 +57,6 @@ export const useScriptPlayer = (song: Song) => {
     pause,
     speed,
     setSpeed,
-    hasReachedEnd,
-    hasScroll,
   };
 };
 
