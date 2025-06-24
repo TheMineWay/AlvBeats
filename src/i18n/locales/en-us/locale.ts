@@ -4,6 +4,7 @@ import layout from "./layout.json";
 import settings from "./settings.json";
 import songImport from "./song-import.json";
 import songPlayer from "./song-player.json";
+import songScriptPlayer from "./song-script-player.json";
 import songSearch from "./song-search.json";
 
 const EN_US = {
@@ -13,6 +14,7 @@ const EN_US = {
   "song-search": songSearch,
   "song-player": songPlayer,
   "song-import": songImport,
+  "song-script-player": songScriptPlayer,
   settings,
 };
 
