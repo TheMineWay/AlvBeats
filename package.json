@@ -39,7 +39,7 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
-    "@emotion/styled": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^5.1.1",
     "@mui/icons-material": "^7.1.1",
     "@radix-ui/react-dialog": "^1.1.14",
