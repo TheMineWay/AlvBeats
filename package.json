@@ -55,7 +55,7 @@
     "@tanstack/react-router": "^1.129.0",
     "@tanstack/react-router-devtools": "^1.121.12",
     "@themineway/smart-storage-js": "1.0.0-alpha.17",
-    "@themineway/smart-storage-react": "1.0.0-alpha.13",
+    "@themineway/smart-storage-react": "1.0.0-alpha.15",
     "@types/lodash": "^4.17.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

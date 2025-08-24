@@ -57,8 +57,8 @@ importers:
         specifier: 1.0.0-alpha.17
         version: 1.0.0-alpha.17
       '@themineway/smart-storage-react':
-        specifier: 1.0.0-alpha.13
-        version: 1.0.0-alpha.13
+        specifier: 1.0.0-alpha.15
+        version: 1.0.0-alpha.15
       '@types/lodash':
         specifier: ^4.17.20
         version: 4.17.20
@@ -1946,14 +1946,14 @@ packages:
     resolution: {integrity: sha512-Ssi+yKcjG9ru02ieCpUBF7QQBEKGB7WQS1R9va3GHu+Oq9WjzmJ4rifzdugjTeKD3yfT7d1I+pOxRhoWog6CHw==}
     engines: {node: '>=12'}
 
-  '@themineway/smart-storage-js@1.0.0-alpha.15':
-    resolution: {integrity: sha512-odjxrWV9qU3M51uwIOwq4bPt0vOAPfwMupKXKlwfzaEuadKS6Al6w0Ocj9b5HQHeHvBOe5wH29GamW0XoQ0B2w==}
-
   '@themineway/smart-storage-js@1.0.0-alpha.17':
     resolution: {integrity: sha512-ukt0Y0o9xLHhfH9hNniyYR7+wd3gh6RSeN4w5db7av+iT56ajsMueG3f6vkgMmP6zBvLmbBhv5fUt37W1POzWg==}
 
-  '@themineway/smart-storage-react@1.0.0-alpha.13':
-    resolution: {integrity: sha512-5KTprMrLAWiWBPqGD9dRukiX7GLa2lyFhy7VNjzD5KFBQ1tokZNbF6m7K1BmWWZoFTXxX91LteSJte28B0SBgw==}
+  '@themineway/smart-storage-js@1.0.0-alpha.19':
+    resolution: {integrity: sha512-M4aj8d930OmKxUA/kysdKH+B2HC8aGIF8CuHNW5EtAX1n3vyoC49Wlav2mE/AxLl2I1Ev6XzcRyqWCoF3Zwdig==}
+
+  '@themineway/smart-storage-react@1.0.0-alpha.15':
+    resolution: {integrity: sha512-gu8/8+jzFhLUY3TgsJxhv2SsCTS2xAsoNQVDHZXxhEXFSaqmbKm/ZxZMpA6MlcysPnZpQTV+AS4ZGotASBs77Q==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -2251,8 +2251,8 @@ packages:
   caniuse-lite@1.0.30001721:
     resolution: {integrity: sha512-cOuvmUVtKrtEaoKiO0rSc29jcjwMwX5tOHDy4MgVFEWiUXj4uBMJkwI8MDySkgXidpMiHUcviogAvFi4pA2hDQ==}
 
-  caniuse-lite@1.0.30001736:
-    resolution: {integrity: sha512-ImpN5gLEY8gWeqfLUyEF4b7mYWcYoR2Si1VhnrbM4JizRFmfGaAQ12PhNykq6nvI4XvKLrsp8Xde74D5phJOSw==}
+  caniuse-lite@1.0.30001737:
+    resolution: {integrity: sha512-BiloLiXtQNrY5UyF0+1nSJLXUENuhka2pzy2Fx5pGxqavdrxSCW4U6Pn/PoG3Efspi2frRbHpBV2XsrPE6EDlw==}
 
   chai@5.2.0:
     resolution: {integrity: sha512-mCuXncKXk5iCLhfhwTc0izo0gtEmpz5CtG2y8GiOINBlMVS6v8TMRc5TaLWKS6692m9+dVVfzgeVxR5UxWHTYw==}
@@ -2391,8 +2391,8 @@ packages:
   electron-to-chromium@1.5.165:
     resolution: {integrity: sha512-naiMx1Z6Nb2TxPU6fiFrUrDTjyPMLdTtaOd2oLmG8zVSg2hCWGkhPyxwk+qRmZ1ytwVqUv0u7ZcDA5+ALhaUtw==}
 
-  electron-to-chromium@1.5.207:
-    resolution: {integrity: sha512-mryFrrL/GXDTmAtIVMVf+eIXM09BBPlO5IQ7lUyKmK8d+A4VpRGG+M3ofoVef6qyF8s60rJei8ymlJxjUA8Faw==}
+  electron-to-chromium@1.5.208:
+    resolution: {integrity: sha512-ozZyibehoe7tOhNaf16lKmljVf+3npZcJIEbJRVftVsmAg5TeA1mGS9dVCZzOwr2xT7xK15V0p7+GZqSPgkuPg==}
 
   enhanced-resolve@5.18.1:
     resolution: {integrity: sha512-ZSW3ma5GkcQBIpwZTSRAI8N71Uuwgs93IezB7mf7R60tC8ZbJideoDNKjHn2O9KIlx6rkGTTEk1xUCK2E1Y2Yg==}
@@ -3901,8 +3901,14 @@ packages:
   yup@1.6.1:
     resolution: {integrity: sha512-JED8pB50qbA4FOkDol0bYF/p60qSEDQqBD0/qeIrUCG1KbPBIQ776fCUNb9ldbPcSTxA69g/47XTo4TqWiuXOA==}
 
+  yup@1.7.0:
+    resolution: {integrity: sha512-VJce62dBd+JQvoc+fCVq+KZfPHr+hXaxCcVgotfwWvlR0Ja3ffYKaJBT8rptPOSKOGJDCUnW2C2JWpud7aRP6Q==}
+
   zod@3.25.74:
     resolution: {integrity: sha512-J8poo92VuhKjNknViHRAIuuN6li/EwFbAC8OedzI8uxpEPGiXHGQu9wemIAioIpqgfB4SySaJhdk0mH5Y4ICBg==}
+
+  zod@4.1.1:
+    resolution: {integrity: sha512-SgMZK/h8Tigt9nnKkfJMvB/mKjiJXaX26xegP4sa+0wHIFVFWVlsQGdhklDmuargBD3Hsi3rsQRIzwJIhTPJHA==}
 
 snapshots:
 
@@ -5779,19 +5785,19 @@ snapshots:
 
   '@tanstack/virtual-file-routes@1.120.17': {}
 
-  '@themineway/smart-storage-js@1.0.0-alpha.15':
-    dependencies:
-      yup: 1.6.1
-      zod: 3.25.74
-
   '@themineway/smart-storage-js@1.0.0-alpha.17':
     dependencies:
       yup: 1.6.1
       zod: 3.25.74
 
-  '@themineway/smart-storage-react@1.0.0-alpha.13':
+  '@themineway/smart-storage-js@1.0.0-alpha.19':
     dependencies:
-      '@themineway/smart-storage-js': 1.0.0-alpha.15
+      yup: 1.7.0
+      zod: 4.1.1
+
+  '@themineway/smart-storage-react@1.0.0-alpha.15':
+    dependencies:
+      '@themineway/smart-storage-js': 1.0.0-alpha.19
       react: 19.1.0
 
   '@types/babel__core@7.20.5':
@@ -6137,8 +6143,8 @@ snapshots:
 
   browserslist@4.25.3:
     dependencies:
-      caniuse-lite: 1.0.30001736
-      electron-to-chromium: 1.5.207
+      caniuse-lite: 1.0.30001737
+      electron-to-chromium: 1.5.208
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.25.3)
 
@@ -6167,7 +6173,7 @@ snapshots:
 
   caniuse-lite@1.0.30001721: {}
 
-  caniuse-lite@1.0.30001736: {}
+  caniuse-lite@1.0.30001737: {}
 
   chai@5.2.0:
     dependencies:
@@ -6307,7 +6313,7 @@ snapshots:
 
   electron-to-chromium@1.5.165: {}
 
-  electron-to-chromium@1.5.207: {}
+  electron-to-chromium@1.5.208: {}
 
   enhanced-resolve@5.18.1:
     dependencies:
@@ -7965,4 +7971,13 @@ snapshots:
       toposort: 2.0.2
       type-fest: 2.19.0
 
+  yup@1.7.0:
+    dependencies:
+      property-expr: 2.0.6
+      tiny-case: 1.0.3
+      toposort: 2.0.2
+      type-fest: 2.19.0
+
   zod@3.25.74: {}
+
+  zod@4.1.1: {}
