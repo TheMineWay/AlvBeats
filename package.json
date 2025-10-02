@@ -83,7 +83,7 @@
     "tw-animate-css": "^1.3.6",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
-    "vite": "^6.3.5",
+    "vite": "^6.3.6",
     "vite-plugin-full-reload": "^1.2.0",
     "vite-plugin-pwa": "^1.0.2",
     "vitest": "^3.2.3"
